@@ -16,16 +16,16 @@ int precio;
 
 struct inventario datos[10]=                        // Inventario Inicial de Bebidas y Alimentos
 {
-10,"Coca Cola",3,
-10,"Pepsi Cola",3,
-10,"Bifrutas",6,
-10,"Red Bull",8,
-10,"Heineken",12,
-10,"KitKat",16,
-10,"Oreo",23,
-5,"Snickers",88,
-5,"Principe",109,
-5,"Nestea",251     
+10,"Coca Cola",2,
+10,"Pepsi Cola",2,
+10,"Bifrutas",3,
+10,"Red Bull",4,
+10,"Heineken",3,
+10,"KitKat ",1,
+10,"Oreo",2,
+10,"Snickers",2,
+10,"Principe",3,
+10,"Nestea ",3     
 };
 
 struct tabla_cambio
@@ -36,25 +36,38 @@ int monedas;
 
 struct tabla_cambio dinero[10]=                     // Inventario Inicial de Monedas
 {
+0,10,        // valor, cantidad
 1,10,
 2,10,
 5,10,
 10,10,
+15,10,
 20,10,
+25,10,
 50,10,
-100,10,
-200,10,
-500,10,
-1000,10
+100,10
 };      
       
 int main()
 {
+  FILE *f;
+  f =fopen("ReadMe.txt","w");
+  fprintf(f, "------------------------------------------------------\n Autoras:Anne Idigoras, Mayi Echeveste y Paula Elosegui\n");  
+  fprintf(f, "------------------------------------------------------\n ");
+  fprintf(f, "Bienvenidos a la maquina expendedora!\n\n");
+  fprintf(f, "A continuacion le vamos a explicar su funcionamiento:\n\n");
+  fprintf(f, "Nuestra maquina expendedora consta de 7 operaciones; \n 1) Coger el producto que quiera de entre los que disponemos; primero elegira el producto y despues introducira las monedas necesarias (en caso de se pase le devolveremos el cambio)\n");
+  fprintf(f, " 2) Reponer el stock de productos\n 3) Saca una lista de la valoracion del inventario\n 4) Muestra la cantidad que tenemos para dar el cambio \n 5) Reponer el cambio \n 6) Retirar el cambio\n 7)Salir del programa");
+  fprintf(f, "\n\n------------------------------------------------------\n ");
+  fprintf(f, "\n Si tiene cualquier duda/ruego o sugerencia, pongase en contacto con: anneidigoras@opendeusto.es\n");
+  fprintf(f, "------------------------------------------------------\n ");
+
 int opcion;  
+
 do  
 {
   system("cls");   
-  printf("\n     La Super Maquina Expendedora\n\n");
+  printf("\n   Maquina Expendedora\n\n");
   printf("\t1) Sacar un Producto\n");
   printf("\t2) Reponer Productos\n");
   printf("\t3) Inventario Valorado\n"); 
@@ -84,26 +97,33 @@ do
             break;     
   }
 }while(opcion!=7);
+fclose(f);
 return 0;  
 }
 
 void refresco()
 {
-int a,item=0,ingreso=0,mon_tabla[10],cambio[10],total=0,saldo=0;   
+ 
+int a,producto=0,ingreso=0,mon_tabla[10],cambio[10],total=0,saldo=0;   
+
 system("cls");
 for (a=0;a<10;a++)
   mon_tabla[a]=cambio[a]=0;                         // Reseteo las Monedas Ingresadas por el Cliente y las que se le Entregaran por Cambio
-printf("\t  Refresco\t\tPrecio\n\n");
+
+printf("\t  Producto\t\tPrecio\n\n");
 for (a=0;a<10;a++)                                 // Imprimo el Inventario de Productos
-  printf("%2i)\t%s\t\t%5i\n",a+1,datos[a].nombres,datos[a].precio);
-while (item<1||item>10)
+  printf("%2i)\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio);
+while (producto<1||producto>10)
 {     
   printf("\nIngrese el codigo del refresco que desea comprar: ");
-  scanf("%i",&item);                                // Escojo producto
-  if (item<1||item>10)
+  scanf("%i",&producto);                                // Escojo producto
+
+ 
+
+  if (producto<1||producto>10)
    printf("\nError, Ingrese una de las diez opciones\n"); 
 } 
-if (datos[item-1].cantidad==0)                   
+if (datos[producto-1].cantidad==0)                   
   printf("\n\t\tProducto Agotado");
 else
 {
@@ -113,10 +133,10 @@ else
   printf("11) Fin de Ingreso de Monedas\n");    
   while(ingreso!=11)
   {
-   printf("\nIngrese el codigo de la moneda a ingresar (11 para concluir): ");
+   printf("\nIngrese el codigo de la moneda a ingresar (11 para volver al inicio): ");
    scanf("%i",&ingreso);
    if (ingreso<1||ingreso>11)
-    printf("\nError, Ingrese una de las once opciones\n");
+    printf("\nError, Ingrese una de las 11 opciones\n");
    else if (ingreso!=11)
    {
     mon_tabla[ingreso-1]++;                         // Guardo Cada Moneda
@@ -126,11 +146,11 @@ else
   for (a=0;a<10;a++)
    mon_tabla[a]+=dinero[a].monedas;                 // Tengo la Cantidad Total de Monedas: Maquina+Cliente 
   printf("\nCantitad Total Ingresado: %i\n",total);
-  if (total<datos[item-1].precio)
+  if (total<datos[producto-1].precio)
    printf("\nImporte Insuficiente\n\n");             
   else                                              // Si el Dinero es Suficiente, Procede a Entregar Cambio y Producto
   {
-   saldo=total-datos[item-1].precio;                // Saldo a entregar
+   saldo=total-datos[producto-1].precio;                // Saldo a entregar
    for(a=9;a>=0;a--)
    {
     if ((dinero[a].valor<=saldo)&&mon_tabla[a]>0)
@@ -145,29 +165,31 @@ else
     printf("\nIntroduzca Importe Exacto\n\n");
    else
    {
-    printf("\nCambio: %i\n\n",total-datos[item-1].precio);  
+    printf("\nCambio: %i\n\n",total-datos[producto-1].precio);  
     for (a=0;a<10;a++)
     {
      dinero[a].monedas=mon_tabla[a];                // Guardo la Cantidad de Monedas en la Maquina
      if (cambio[a]>0)                               // Imprimo el Cambio  
      printf("%i monedas de %i\n",cambio[a],dinero[a].valor);                       
     } 
-    datos[item-1].cantidad--;                       // Entrego el producto                                 
+    datos[producto-1].cantidad--;                       // Entrego el producto                                 
     printf("\n");   
+
    }                                                                    
   }      
 }    
-system("pause");
+
+system("pause");                  //con system ( pause), el programa no hara nada hasta que el usuario presione alguna tecla.
 }
 
 void reponer_retirar(int caso)
 {
-int a,item=0,canrep=0; 
+int a,producto=0,canrep=0; 
 system("cls");
 if (caso==1)
 {
   printf("\t  Refresco\t     Cantidad\n\n");
-  for (a=0;a<10;a++)                                 // Imprimo el Inventario de Bebidas
+  for (a=0;a<10;a++)                                 // Imprimo el Inventario de Productos
    printf("%2i)\t%s\t\t%2i\n",a+1,datos[a].nombres,datos[a].cantidad);
 }
 else
@@ -176,14 +198,14 @@ else
   for (a=0;a<10;a++)                                 // Imprimo el Inventario de Monedas
    printf("%2i)\t%4i\t\t%2i\n",a+1,dinero[a].valor,dinero[a].monedas);  
 } 
-while (item<1||item>10)
+while (producto<1||producto>10)
 {  
   if (caso==3)
    printf("\nIngrese el codigo de la moneda que desea retirar: ");
   else  
-   printf("\nIngrese el codigo del item que desea reponer: ");
-  scanf("%i",&item);                                // Capturo el Item a Reponer o la Moneda a Retirar 
-  if (item<1||item>10)
+   printf("\nIngrese el codigo del producto que desea reponer: ");
+  scanf("%i",&producto);                                // Capturo el producto a Reponer o la Moneda a Retirar 
+  if (producto<1||producto>10)
    printf("\nError, Ingrese una de las diez opciones\n"); 
 }
 while (canrep<1)
@@ -203,23 +225,23 @@ while (canrep<1)
 }
 if (caso==1)
 {
-  datos[item-1].cantidad+=canrep;                   // Repongo la Cantidad de Bebidas
+  datos[producto-1].cantidad+=canrep;                   // Repongo la Cantidad de Bebidas
   printf("\n\n       Nuevo inventario de Producto\n");
-  printf("\n\t%s\t\t%2i\n\n",datos[item-1].nombres,datos[item-1].cantidad);
+  printf("\n\t%s\t\t%2i\n\n",datos[producto-1].nombres,datos[producto-1].cantidad);
 }
 else
 {
   if (caso==2)  
-   dinero[item-1].monedas+=canrep;                  // Repongo la Cantidad de Monedas
+   dinero[producto-1].monedas+=canrep;                  // Repongo la Cantidad de Monedas
   else
   {
-   if (dinero[item-1].monedas==0||dinero[item-1].monedas<canrep)
-    printf("\nNo hay suficientes monedas de %i para retirar",dinero[item-1].valor);
+   if (dinero[producto-1].monedas==0||dinero[producto-1].monedas<canrep)
+    printf("\nNo hay suficientes monedas de %i para retirar",dinero[producto-1].valor);
    else
-    dinero[item-1].monedas-=canrep;                 // Retiro Monedas
+    dinero[producto-1].monedas-=canrep;                 // Retiro Monedas
   }     
   printf("\n\n     Nuevo inventario de Moneda\n");  // Imprimo Nueva Cantidad de Monedas
-  printf("\n\t%i\t\t%2i\n\n",dinero[item-1].valor,dinero[item-1].monedas);  
+  printf("\n\t%i\t\t%2i\n\n",dinero[producto-1].valor,dinero[producto-1].monedas);  
 } 
 system("pause");
 }
@@ -232,10 +254,10 @@ if (caso==1)
 { 
   printf("\n\t\t\tInventario Valorado\n\n");
   printf("\tRefresco\tCantidad\tPrecio\t\tImporte\n\n");
-  for (a=0;a<10;a++)                                 // Imprimo el Inventario de Bebidas
+  for (a=0;a<10;a++)                                 // Imprimo el Inventario de productos
   {
-   printf("%2i)\t%s\t   %2i\t\t %4i\t\t %4i\n",a+1,datos[a].nombres,datos[a].cantidad,datos[a].precio,datos[a].cantidad*datos[a].precio);  
-   total+=datos[a].cantidad*datos[a].precio;         // Obtengo el Importe Total de Bebidas                                                                                
+   printf("%2i)\t%s\t   %2i\t\t %2i\t\t %2i\n",a+1,datos[a].nombres,datos[a].cantidad,datos[a].precio,datos[a].cantidad*datos[a].precio);  
+   total+=datos[a].cantidad*datos[a].precio;         // Obtengo el Importe Total de productos                                                                              
   }
   printf("\n\t\t\tTotal Inventario:\t\t %i\n\n",total);
 }
