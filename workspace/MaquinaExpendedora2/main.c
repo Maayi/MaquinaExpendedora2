@@ -1,5 +1,3 @@
-
- 
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -21,11 +19,11 @@ struct inventario datos[10]=                        // Inventario Inicial de Beb
 10,"Bifrutas",3,
 10,"Red Bull",4,
 10,"Heineken",3,
-10,"KitKat ",1,
-10,"Oreo",2,
+10,"KitKat   ",1,
+10,"Oreo    ",2,
 10,"Snickers",2,
 10,"Principe",3,
-10,"Nestea ",3     
+10,"Nestea    ",3     
 };
 
 struct tabla_cambio
