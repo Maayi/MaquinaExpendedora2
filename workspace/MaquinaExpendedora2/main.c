@@ -4,6 +4,8 @@
 void invent_val_din(int caso);                      // Imprime los Inventarios de Bebidas y Monedas
 void reponer_retirar(int caso);                     // Repone Cantidad de Bebidas y Monedas y Retira Monedas
 void refresco();                                    // Saca el Refresco y Entrega el Cambio
+void guardarProductos();
+void guardar();                                     //Guardar los datos en un fichero
 
 struct inventario
 {
@@ -48,6 +50,7 @@ struct tabla_cambio dinero[10]=                     // Inventario Inicial de Mon
       
 int main()
 {
+  guardarProductos();
   FILE *f;
   f =fopen("ReadMe.txt","w");
   fprintf(f, "------------------------------------------------------\n Autoras:Anne Idigoras, Mayi Echeveste y Paula Elosegui\n");  
@@ -78,8 +81,10 @@ do
   switch (opcion)
   {
    case 1: refresco();                              // Compro Productos
+           //guardar();
            break;
    case 2: reponer_retirar(1);                      // Repongo Productos
+           //guardar();
            break;
    case 3: invent_val_din(1);                       // Imprimo el Inventario de Productos
            break;
@@ -99,6 +104,25 @@ fclose(f);
 return 0;  
 }
 
+void guardar ()
+{
+ 
+}
+
+void guardarProductos ()
+{
+//------------------------------------
+FILE* f;
+  
+  //abrir fichero para escritura "w"
+  f = fopen("Productos.txt", "w");
+  int a;
+  for (a=0;a<10;a++)
+    fprintf(f, "%2i)\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio );
+  
+  //cerrar fichero
+  fclose(f);
+}
 void refresco()
 {
  
@@ -109,8 +133,14 @@ for (a=0;a<10;a++)
   mon_tabla[a]=cambio[a]=0;                         // Reseteo las Monedas Ingresadas por el Cliente y las que se le Entregaran por Cambio
 
 printf("\t  Producto\t\tPrecio\n\n");
+
+
+
 for (a=0;a<10;a++)                                 // Imprimo el Inventario de Productos
-  printf("%2i)\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio);
+ { printf("%2i)\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio);}
+
+
+
 while (producto<1||producto>10)
 {     
   printf("\nIngrese el codigo del refresco que desea comprar: ");
