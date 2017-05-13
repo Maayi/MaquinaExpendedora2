@@ -2,53 +2,7 @@
 #include <stdlib.h>
 #include "Expende.h"
 
-/*void invent_val_din(int caso);                      // Imprime los Inventarios de Bebidas y Monedas
-void reponer_retirar(int caso);                     // Repone Cantidad de Bebidas y Monedas y Retira Monedas
-void refresco();                                    // Saca el Refresco y Entrega el Cambio
-void guardarProductos();
-void guardar();                                     //Guardar los datos en un fichero*/
 
-/*struct inventario
-{
-int cantidad;
-char *nombres;
-int precio;     
-};*/
-
-/*struct inventario datos[10]=                        // Inventario Inicial de Bebidas y Alimentos
-{
-10,"Coca Cola",2,
-10,"Pepsi Cola",2,
-10,"Bifrutas",3,
-10,"Red Bull",4,
-10,"Heineken",3,
-10,"KitKat   ",1,
-10,"Oreo    ",2,
-10,"Snickers",2,
-10,"Principe",3,
-10,"Nestea    ",3     
-};
-
-/*struct tabla_cambio
-{
-int valor;
-int monedas;
-};*/
-
-/*struct cambio dinero[10]=                     // Inventario Inicial de Monedas
-{
-0,10,        // valor, cantidad
-1,10,
-2,10,
-5,10,
-10,10,
-15,10,
-20,10,
-25,10,
-50,10,
-100,10
-};      
-*/
 
 
 int main()
@@ -67,42 +21,51 @@ int main()
   fprintf(f, "------------------------------------------------------\n ");
 
 int opcion;  
+int total = 0;
+  
+  Usuario usuario[10];
 
 do  
 {
   //system("cls");   
   printf("\n   Maquina Expendedora\n\n");
-  printf("\t1) Sacar un Producto\n");
-  printf("\t2) Reponer Productos\n");
-  printf("\t3) Inventario Valorado\n"); 
-  printf("\t4) Mostrar Cambio\n");
-  printf("\t5) Reponer Cambio\n");
-  printf("\t6) Retirar Cambio\n");
-  printf("\t7) Salir\n\n");
+  printf("\t1) Introducir usuario\n");
+  printf("\t2) Datos usuarios\n");
+  printf("\t3) Sacar un Producto\n");
+  printf("\t4) Reponer Productos\n");
+  printf("\t5) Inventario Valorado\n"); 
+  printf("\t6) Mostrar Cambio\n");
+  printf("\t7) Reponer Cambio\n");
+  printf("\t8) Retirar Cambio\n");
+  printf("\t9) Salir\n\n");
   printf("     Seleccione una opcion: ");
   scanf("%i",&opcion);                              // Capturo opcion del Menu
   switch (opcion)
   {
-   case 1: refresco();                              // Compro Productos
+    case 1: introUsuario(&usuario[total], total);
+    break;
+    case 2: datosUsuarios();
+    break;
+   case 3: refresco();                              // Compro Productos
            //guardar();
            break;
-   case 2: reponer_retirar(1);                      // Repongo Productos
+   case 4: reponer_retirar(1);                      // Repongo Productos
            //guardar();
            break;
-   case 3: invent_val_din(1);                       // Imprimo el Inventario de Productos
+   case 5: invent_val_din(1);                       // Imprimo el Inventario de Productos
            break;
-   case 4: invent_val_din(2);                       // Imprimo el Inventario de Dinero
+   case 6: invent_val_din(2);                       // Imprimo el Inventario de Dinero
            break;
-   case 5: reponer_retirar(2);                      // Repongo Monedas
+   case 7: reponer_retirar(2);                      // Repongo Monedas
            break;
-   case 6: reponer_retirar(3);                      // Retiro Monedas
+   case 8: reponer_retirar(3);                      // Retiro Monedas
            break;
-   case 7: break;                                   // Fin del Programa
+   case 9: break;                                   // Fin del Programa
    default: printf("\nError, Ingrese una de las siete opciones\n\n");
             system("pause");
             break;     
   }
-}while(opcion!=7);
+}while(opcion!=9);
 fclose(f);
 return 0;  
 }

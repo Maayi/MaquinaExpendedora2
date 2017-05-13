@@ -1,7 +1,9 @@
 #include "Expende.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define MAX_NUM 10
+#define ELEMENTOS
 
 //inventario *datos;
 //cambio *dinero;
@@ -34,6 +36,8 @@ struct cambio dinero[10]=                     // Inventario Inicial de Monedas
 50,10,
 100,10
 };    
+
+
 void guardarProductos ()
 {
 
@@ -53,7 +57,64 @@ void guardarProductos ()
 
 
 }
+void datosUsuarios()
+{
 
+}
+
+void introUsuario(Usuario *u, int total)
+{
+  Usuario usuario[10];
+  char str[MAX_NUM];
+  char frmt_str[MAX_NUM];
+
+  printf("USUARIO (%d)\n", total + 1);
+
+  printf("DNI: ");
+  fgets(str, MAX_NUM, stdin);
+  clear_if_needed(str);
+  sscanf(str, "%d", &u->dni);
+
+  printf("Nombre: ");
+  fgets(str, MAX_NUM, stdin);
+  clear_if_needed(str);
+  sscanf(str, "%s", frmt_str); //eliminar el \n final
+
+  //reservar la memoria justa para la cadena almacenada
+  u->nombre = (char *)malloc((strlen(frmt_str) + 1) * sizeof(char));
+  strcpy(u->nombre, frmt_str);
+
+   FILE* f2;
+  int b;
+  
+  //abrir fichero para escritura "w"
+  f2 = fopen("Usuarios.txt", "w");
+
+  fprintf(f2, "\t DNI \t\tNombre\n\n", MAX_NUM);
+  for (b = 0; b < MAX_NUM; b++)
+    fprintf(f2,"(%2i)\t\t\t%s\t\t %i\n",b+1,usuario[b].dni,usuario[b].nombre);
+  
+  //cerrar fichero
+  fclose(f2);
+
+  
+
+}
+void clear_if_needed(char *str)
+{
+  if (str[strlen(str) - 1] != '\n')
+  {
+    int c;    
+      while ( (c = getchar()) != EOF && c != '\n');
+    }
+}
+
+void liberarMemoria(Usuario *u, int total)
+{
+  int i;
+  for (i = 0; i < total; i++)
+    free(u[i].nombre);
+}
 void refresco()
 {
  
