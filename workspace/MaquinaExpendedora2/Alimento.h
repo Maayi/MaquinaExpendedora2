@@ -11,7 +11,7 @@ private:
 
 public:
 	Alimento(const int id, const char* nombreP, const float precioP, const int num, const int gramos);
-	//~Alimento(); ¿Tampoco lo necesitamos no?
+	//virtual ~Alimento(); ¿Tampoco lo necesitamos no?
 
 	int getGramos()const ;
 	void setGramos(const int gr);

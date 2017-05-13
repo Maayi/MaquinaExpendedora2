@@ -1,25 +1,24 @@
 #ifndef BEBIDA_H_
 #define BEBIDA_H_
 
-#include <string>
 #include "Producto.h"
 
 class Bebida: public Producto
 {
 private:
 	int miliL;
-	string car; //característica
+	char* car; //característica
 
 public:
 	Bebida();
-	Bebida(const int id, const string nombreP, const float precioP, const int num, const int gramos);
-	//~Alimento(); ¿Tampoco lo necesitamos no?
+	Bebida(const int id, const char* nombreP, const float precioP, const int num, const int miliL, const char* car);
+	virtual ~Bebida(); 
 
-	int getMiliL();
-	void setMiliL();
+	int getMiliL()const;
+	void setMiliL(const int miliL);
 
-	string getCar();
-	void setCar();
+	char* getCar()const;
+	void setCar(const char* car);
 	
 
 };

@@ -14,7 +14,7 @@ private:
 public:
 	Producto(const int id, const char* nombreP, const float precioP, const int num);
 	Producto (const Producto &p);
-	//~Producto(); ¿No lo necesitamos no?
+	//virtual ~Producto(); ¿No lo necesitamos no?
 
 	int getID() const;
 	char* getNombre()const;
