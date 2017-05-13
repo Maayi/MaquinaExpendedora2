@@ -25,6 +25,7 @@ public:
 	void ReduceNum();
 
 	virtual void escribirEnFichero(const char* fichero) = 0; //metodo abstracto que hace que la clase sea abstracta)
+	
 
 };
 

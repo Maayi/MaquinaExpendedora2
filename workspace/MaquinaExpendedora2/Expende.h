@@ -3,6 +3,8 @@
 
 struct inventario
 {
+	
+int id;
 int cantidad;
 char *nombres;
 int precio;     

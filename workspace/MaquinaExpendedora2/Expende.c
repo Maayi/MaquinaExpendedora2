@@ -1,22 +1,24 @@
 #include "Expende.h"
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX_NUM 10
 
 //inventario *datos;
 //cambio *dinero;
 
 struct inventario datos[10]=                        // Inventario Inicial de Bebidas y Alimentos
 {
-10,"Coca Cola",2,
-10,"Pepsi Cola",2,
-10,"Bifrutas",3,
-10,"Red Bull",4,
-10,"Heineken",3,
-10,"KitKat   ",1,
-10,"Oreo    ",2,
-10,"Snickers",2,
-10,"Principe",3,
-10,"Nestea    ",3     
+
+1,10,"Coca Cola",2,
+2,10,"Pepsi Cola",2,
+3,10,"Bifrutas",3,
+4,10,"Red Bull",4,
+5,10,"Heineken",3,
+6,10,"KitKat   ",1,
+7,10,"Oreo    ",2,
+8,10,"Snickers",2,
+9,10,"Principe",3,
+10,10,"Nestea    ",3     
 };
 
 struct cambio dinero[10]=                     // Inventario Inicial de Monedas
@@ -34,20 +36,24 @@ struct cambio dinero[10]=                     // Inventario Inicial de Monedas
 };    
 void guardarProductos ()
 {
-//------------------------------------
-FILE* f;
 
+   FILE* f;
+  int a;
   
   //abrir fichero para escritura "w"
   f = fopen("Productos.txt", "w");
-  int a;
-
-for (a=0;a<10;a++)                                 
- { printf("%2i)\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio);}
+  
+  //escribir en fichero un string formateado 
+  fprintf(f, "\t Codigo \t\tProducto\t\tPrecio\n\n", MAX_NUM);
+  for (a = 0; a < MAX_NUM; a++)
+    fprintf(f,"(%2i)\t\t\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio);
   
   //cerrar fichero
   fclose(f);
+
+
 }
+
 void refresco()
 {
  
@@ -57,12 +63,14 @@ int a,producto=0,ingreso=0,mon_tabla[10],cambio[10],total=0,saldo=0;
 for (a=0;a<10;a++)
   mon_tabla[a]=cambio[a]=0;                         // Reseteo las Monedas Ingresadas por el Cliente y las que se le Entregaran por Cambio
 
-printf("\t  Producto\t\tPrecio\n\n");
+printf("\t Codigo \t\tProducto\t\tPrecio\n\n");
+
+
 
 
 
 for (a=0;a<10;a++)                                 // Imprimo el Inventario de Productos
- { printf("%2i)\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio);}
+ { printf("%3i)\t\t\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio);}
 
 
 
@@ -132,7 +140,7 @@ else
   }      
 }    
 
-//system("pause");                  //con system ( pause), el programa no hara nada hasta que el usuario presione alguna tecla.
+
 }
 
 void reponer_retirar(int caso)

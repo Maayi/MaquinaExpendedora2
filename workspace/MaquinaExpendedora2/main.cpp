@@ -2,6 +2,11 @@
 #include "Alimento.h"
 #include "Bebida.h"
 #include <iostream>
+
+#include <fstream>
+#include <string>
+#include <stdlib.h>
+#include <vector>
 using namespace std;
 
 ostream& operator<< (ostream &out, const Producto &p)
@@ -44,6 +49,32 @@ int main ()
 	cout<< b1;
 
 	cout << "Bebida : "<< b1.getMiliL() << endl;
+
+	string line;
+  ifstream myfile("Productos.txt");
+  float precio = 0.0;
+  int i = 1;
+  int total = 0;
+
+  
+  while (getline(myfile, line)) {
+    cout << line << endl;
+    if (i % 2 == 0) {
+      float aux = atof(line.c_str());
+      precio += aux;
+      //total++;
+    }
+    else {
+      size_t pos = line.find(" ");
+      total = atoi(line.substr(pos).c_str());
+    }
+    i++;
+  }
+  
+
+  cout << "Price = " << precio << ", total = " << total << endl;
+  
+  cout << "Precio medio de los pedidos: " << precio / (total) << endl;
 
 	
 
