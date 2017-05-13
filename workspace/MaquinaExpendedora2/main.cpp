@@ -17,15 +17,17 @@ ostream& operator<< (ostream &out, const Alimento &a) //: Producto (stream &out,
 	out <<'\t' <<'\t' <<"Gramos: " << a.getGramos()<< endl;
 	
 }
-/*ostream& operator<< (ostream &out, const Bebida &b)
+
+
+ostream& operator<< (ostream &out, const Bebida &b)
 {
-	out << "Capacidad= " << a.getCapacity() << '\t' <<"Valores: " << endl;
-	for (int i =0; i< a.getCapacity(); i++)
-	{
-		out << a.getValue(i) << endl;
-	}
+	out << b.getID()<< ": "<< b.getNombre() <<  '\t' <<"Precio: " << b.getprecioP() <<endl;
+	out << '\t' <<'\t' <<"Stock: " << b.getNum()<< endl;
+	out <<'\t' <<'\t' <<"Mililitros: " << b.getMiliL()<< endl;
+	out <<'\t' <<'\t' <<"Caracteristicas: " << b.getCar()<< endl;
+	
 }
-*/
+
 int main ()
 {
 
@@ -39,7 +41,7 @@ int main ()
 
 	Bebida b1 (2, "Marcos", 5.0, 5, 100, "cucu");
 	//b1.setMiliL(200);
-
+	cout<< b1;
 
 	cout << "Bebida : "<< b1.getMiliL() << endl;
 
