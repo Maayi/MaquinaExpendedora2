@@ -16,7 +16,7 @@ public:
 	int getGramos()const ;
 	void setGramos(const int gr);
 	
-
+	virtual void escribirEnFichero(const char* fichero); //esta clase no es abstracta
 };
 
 

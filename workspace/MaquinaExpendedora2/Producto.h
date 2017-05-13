@@ -1,8 +1,6 @@
 #ifndef PRODUCTO_H_
 #define PRODUCTO_H_
 
-//#include <string>
-
 class Producto
 {
 private:
@@ -25,6 +23,8 @@ public:
 	void setNombre( char* nombre);
 	void setprecioP(const float precio);
 	void ReduceNum();
+
+	virtual void escribirEnFichero(const char* fichero) = 0; //metodo abstracto que hace que la clase sea abstracta)
 
 };
 

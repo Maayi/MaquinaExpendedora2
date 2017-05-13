@@ -30,4 +30,9 @@ void Bebida::setCar(const char* car)
 {
 	//this-> car = car;
 }
+void Bebida::escribirEnFichero(const char* fichero)
+{
+	//cout << "Escribiendo en " << fichero << endl;
+}
+
 	

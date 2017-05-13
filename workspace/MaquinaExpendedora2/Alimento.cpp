@@ -12,3 +12,7 @@ void Alimento::setGramos(const int gr)
 {
 	this -> gramos = gr;
 }
+void Alimento::escribirEnFichero(const char* fichero)
+{
+	//cout << "Escribiendo en " << fichero << endl;
+}

@@ -7,9 +7,9 @@ using namespace std;
 int main ()
 {
 
-	Producto p1 (1,"Mayi", 2.0, 10);
+	/*Producto p1 (1,"Mayi", 2.0, 10);
 	p1.ReduceNum();
-	cout << "Producto : "<<p1.getNum() <<endl;
+	cout << "Producto : "<<p1.getNum() <<endl;*/ // esto ya no se puede hacer por que ahora la clase persona es abstracta
 
 	Alimento a1 (2, "Lorea", 2.0,15, 33);
 	cout << "Alimento : "<< a1.getGramos() << endl;
