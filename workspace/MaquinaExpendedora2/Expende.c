@@ -1,21 +1,11 @@
+#include "Expende.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "Expende.h"
 
-/*void invent_val_din(int caso);                      // Imprime los Inventarios de Bebidas y Monedas
-void reponer_retirar(int caso);                     // Repone Cantidad de Bebidas y Monedas y Retira Monedas
-void refresco();                                    // Saca el Refresco y Entrega el Cambio
-void guardarProductos();
-void guardar();                                     //Guardar los datos en un fichero*/
+//inventario *datos;
+//cambio *dinero;
 
-/*struct inventario
-{
-int cantidad;
-char *nombres;
-int precio;     
-};*/
-
-/*struct inventario datos[10]=                        // Inventario Inicial de Bebidas y Alimentos
+struct inventario datos[10]=                        // Inventario Inicial de Bebidas y Alimentos
 {
 10,"Coca Cola",2,
 10,"Pepsi Cola",2,
@@ -29,13 +19,7 @@ int precio;
 10,"Nestea    ",3     
 };
 
-/*struct tabla_cambio
-{
-int valor;
-int monedas;
-};*/
-
-/*struct cambio dinero[10]=                     // Inventario Inicial de Monedas
+struct cambio dinero[10]=                     // Inventario Inicial de Monedas
 {
 0,10,        // valor, cantidad
 1,10,
@@ -47,81 +31,19 @@ int monedas;
 25,10,
 50,10,
 100,10
-};      
-*/
-
-
-int main()
-{
- guardarProductos();
-  FILE *f;
-  f =fopen("ReadMe.txt","w");
-  fprintf(f, "------------------------------------------------------\n Autoras:Anne Idigoras, Mayi Echeveste y Paula Elosegui\n");  
-  fprintf(f, "------------------------------------------------------\n ");
-  fprintf(f, "Bienvenidos a la maquina expendedora!\n\n");
-  fprintf(f, "A continuacion le vamos a explicar su funcionamiento:\n\n");
-  fprintf(f, "Nuestra maquina expendedora consta de 7 operaciones; \n 1) Coger el producto que quiera de entre los que disponemos; primero elegira el producto y despues introducira las monedas necesarias (en caso de se pase le devolveremos el cambio)\n");
-  fprintf(f, " 2) Reponer el stock de productos\n 3) Saca una lista de la valoracion del inventario\n 4) Muestra la cantidad que tenemos para dar el cambio \n 5) Reponer el cambio \n 6) Retirar el cambio\n 7)Salir del programa");
-  fprintf(f, "\n\n------------------------------------------------------\n ");
-  fprintf(f, "\n Si tiene cualquier duda/ruego o sugerencia, pongase en contacto con: anneidigoras@opendeusto.es\n");
-  fprintf(f, "------------------------------------------------------\n ");
-
-int opcion;  
-
-do  
-{
-  //system("cls");   
-  printf("\n   Maquina Expendedora\n\n");
-  printf("\t1) Sacar un Producto\n");
-  printf("\t2) Reponer Productos\n");
-  printf("\t3) Inventario Valorado\n"); 
-  printf("\t4) Mostrar Cambio\n");
-  printf("\t5) Reponer Cambio\n");
-  printf("\t6) Retirar Cambio\n");
-  printf("\t7) Salir\n\n");
-  printf("     Seleccione una opcion: ");
-  scanf("%i",&opcion);                              // Capturo opcion del Menu
-  switch (opcion)
-  {
-   case 1: refresco();                              // Compro Productos
-           //guardar();
-           break;
-   case 2: reponer_retirar(1);                      // Repongo Productos
-           //guardar();
-           break;
-   case 3: invent_val_din(1);                       // Imprimo el Inventario de Productos
-           break;
-   case 4: invent_val_din(2);                       // Imprimo el Inventario de Dinero
-           break;
-   case 5: reponer_retirar(2);                      // Repongo Monedas
-           break;
-   case 6: reponer_retirar(3);                      // Retiro Monedas
-           break;
-   case 7: break;                                   // Fin del Programa
-   default: printf("\nError, Ingrese una de las siete opciones\n\n");
-            system("pause");
-            break;     
-  }
-}while(opcion!=7);
-fclose(f);
-return 0;  
-}
-
-/*void guardar ()
-{
- 
-}*/
-
-/*void guardarProductos ()
+};    
+void guardarProductos ()
 {
 //------------------------------------
 FILE* f;
+
   
   //abrir fichero para escritura "w"
   f = fopen("Productos.txt", "w");
   int a;
-  for (a=0;a<10;a++)
-    fprintf(f, "%2i)\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio );
+
+for (a=0;a<10;a++)                                 
+ { printf("%2i)\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio);}
   
   //cerrar fichero
   fclose(f);
@@ -131,7 +53,7 @@ void refresco()
  
 int a,producto=0,ingreso=0,mon_tabla[10],cambio[10],total=0,saldo=0;   
 
-system("cls");
+//system("cls");
 for (a=0;a<10;a++)
   mon_tabla[a]=cambio[a]=0;                         // Reseteo las Monedas Ingresadas por el Cliente y las que se le Entregaran por Cambio
 
@@ -210,13 +132,13 @@ else
   }      
 }    
 
-system("pause");                  //con system ( pause), el programa no hara nada hasta que el usuario presione alguna tecla.
+//system("pause");                  //con system ( pause), el programa no hara nada hasta que el usuario presione alguna tecla.
 }
 
 void reponer_retirar(int caso)
 {
 int a,producto=0,canrep=0; 
-system("cls");
+//system("cls");
 if (caso==1)
 {
   printf("\t  Refresco\t     Cantidad\n\n");
@@ -274,13 +196,13 @@ else
   printf("\n\n     Nuevo inventario de Moneda\n");  // Imprimo Nueva Cantidad de Monedas
   printf("\n\t%i\t\t%2i\n\n",dinero[producto-1].valor,dinero[producto-1].monedas);  
 } 
-system("pause");
+//system("pause");
 }
 
 void invent_val_din(int caso)
 {
 int a,total=0; 
-system("cls");
+//system("cls");
 if (caso==1)
 { 
   printf("\n\t\t\tInventario Valorado\n\n");
@@ -302,5 +224,5 @@ else
    total+=dinero[a].valor*dinero[a].monedas;         // Obtengo el Importe Total de Monedas                                                                                
   }
   printf("\n\t\tTotal de Cambio:\t %i\n\n",total);   
-}   
-system("pause");  } */
+}   }
+//system("pause");  } 
