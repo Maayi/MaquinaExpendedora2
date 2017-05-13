@@ -10,11 +10,11 @@ private:
 	int gramos;
 
 public:
-	Alimento(const int id, const string nombreP, const float precioP, const int num, const int gramos);
+	Alimento(const int id, const char* nombreP, const float precioP, const int num, const int gramos);
 	//~Alimento(); ¿Tampoco lo necesitamos no?
 
-	int getGramos();
-	void setGramos();
+	int getGramos()const ;
+	void setGramos(const int gr);
 	
 
 };
