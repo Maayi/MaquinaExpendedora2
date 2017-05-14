@@ -9,10 +9,10 @@ char *nombreU;
 
 public:
 	Usuario(const int dni, const char* nombreU);
-	Usuario (Usuario &u);
+	Usuario (const Usuario &u);
 	~Usuario();
 
-	int getDni();
+	int getDni() const;
 	char * getNombre()const;
 	void setDni(const int dni);
 	void setNombre(char *nombreU);
