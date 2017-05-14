@@ -58,3 +58,10 @@ void Producto::ReduceNum()
 {
 	num--;
 }
+
+void Producto::Print() const
+{
+
+	cout << id << ": "<< nombreP <<  '\t' <<"Precio: " << precioP <<endl;
+	cout << '\t' <<'\t' <<"Stock: " << num<< endl;
+}

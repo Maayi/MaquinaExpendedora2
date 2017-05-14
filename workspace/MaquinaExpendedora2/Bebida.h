@@ -19,6 +19,8 @@ public:
 
 	char* getCar()const;
 	void setCar(const char* car);
+
+	virtual void Print() const;
 	
 	virtual void escribirEnFichero(const char* fichero); //esta clase no es abstracta
 };

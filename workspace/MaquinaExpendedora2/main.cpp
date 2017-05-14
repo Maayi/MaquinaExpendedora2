@@ -48,7 +48,10 @@ int main ()
 	//b1.setMiliL(200);
 	cout<< b1;
 
-	cout << "Bebida : "<< b1.getMiliL() << endl;
+	a1.Print();
+	b1.Print();
+
+
 
 	string line;
   ifstream myfile("Productos.txt");

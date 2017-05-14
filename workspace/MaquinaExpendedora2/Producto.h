@@ -24,6 +24,8 @@ public:
 	void setprecioP(const float precio);
 	void ReduceNum();
 
+	virtual void Print() const; // es para enseñar por pantalla los productos por pantalla
+
 	virtual void escribirEnFichero(const char* fichero) = 0; //metodo abstracto que hace que la clase sea abstracta)
 	
 

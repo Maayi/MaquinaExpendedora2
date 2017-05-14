@@ -1,5 +1,7 @@
 #include "Bebida.h"
+//#include "Producto.h"
 #include <string.h>
+#include <iostream>
 using namespace std;
 
 
@@ -34,5 +36,10 @@ void Bebida::escribirEnFichero(const char* fichero)
 {
 	//cout << "Escribiendo en " << fichero << endl;
 }
-
+void Bebida::Print() const
+{
+	Producto::Print();
+	cout <<'\t' <<'\t' <<"Mililitros: " << miliL<< endl;
+	cout <<'\t' <<'\t' <<"Caracteristicas: " << car << endl;
+}
 	
