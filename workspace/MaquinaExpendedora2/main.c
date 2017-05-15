@@ -37,7 +37,9 @@ do
   printf("\t6) Mostrar Cambio\n");
   printf("\t7) Reponer Cambio\n");
   printf("\t8) Retirar Cambio\n");
-  printf("\t9) Salir\n\n");
+  printf("\t9)Ingreso Admin\n");
+
+  printf("\t10) Salir\n\n");
   printf("     Seleccione una opcion: ");
   scanf("%i",&opcion);                              // Capturo opcion del Menu
   switch (opcion)
@@ -60,12 +62,16 @@ do
            break;
    case 8: reponer_retirar(3);                      // Retiro Monedas
            break;
-   case 9: break;                                   // Fin del Programa
+   case 9: ingresoAdmin();                             
+           //guardar();
+           break;
+
+   case 10: break;                                   // Fin del Programa
    default: printf("\nError, Ingrese una de las siete opciones\n\n");
             system("pause");
             break;     
   }
-}while(opcion!=9);
+}while(opcion!=10);
 fclose(f);
 return 0;  
 }

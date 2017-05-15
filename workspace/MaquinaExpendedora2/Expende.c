@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 #define MAX_NUM 10
 #define ELEMENTOS
 
@@ -60,6 +61,22 @@ void guardarProductos ()
 void datosUsuarios()
 {
 
+}
+
+void ingresoAdmin()
+{
+char name[20];
+char password[10];
+printf("Enter username: ");
+scanf("%s",name);
+printf("Enter password: ");
+scanf("%s",password);
+if (strcmp(name, "Admin") == 0 && strcmp(password, "pass") == 0)
+printf("Access granted\n");
+else printf("Access denied\n");
+
+
+getch();
 }
 
 void introUsuario(Usuario *u, int total)

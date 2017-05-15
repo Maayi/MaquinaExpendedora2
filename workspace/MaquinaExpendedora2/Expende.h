@@ -40,6 +40,8 @@ void liberarMemoria(Usuario *u, int total);
 void clear_if_needed(char *str);
 void introUsuario(Usuario *u, int total);
 
+void ingresoAdmin();
+
 #ifdef __cplusplus
 }  /* end of the 'extern "C"' block */
 #endif
