@@ -3,6 +3,9 @@
 
 #include "Producto.h"
 
+#include <iostream>
+using namespace std;
+
 class Bebida: public Producto
 {
 private:
@@ -24,6 +27,8 @@ public:
 	
 	virtual void escribirEnFichero(const char* fichero); //esta clase no es abstracta
 };
+
+ostream& operator<< (ostream &out, const Bebida &b);
 
 
 #endif

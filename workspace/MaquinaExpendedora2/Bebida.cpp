@@ -1,5 +1,4 @@
 #include "Bebida.h"
-//#include "Producto.h"
 #include <string.h>
 #include <iostream>
 using namespace std;
@@ -43,3 +42,11 @@ void Bebida::Print() const
 	cout <<'\t' <<'\t' <<"Caracteristicas: " << car << endl;
 }
 	
+ostream& operator<< (ostream &out, const Bebida &b)
+{
+	out << b.getID()<< ": "<< b.getNombre() <<  '\t' <<"Precio: " << b.getprecioP() <<endl;
+	out << '\t' <<'\t' <<"Stock: " << b.getNum()<< endl;
+	out <<'\t' <<'\t' <<"Mililitros: " << b.getMiliL()<< endl;
+	out <<'\t' <<'\t' <<"Caracteristicas: " << b.getCar()<< endl;
+	
+}

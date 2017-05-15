@@ -2,6 +2,9 @@
 #define ALIMENTO_H_
 
 #include <string>
+#include <iostream>
+using namespace std;
+
 #include "Producto.h"
 
 class Alimento: public Producto
@@ -21,5 +24,6 @@ public:
 	virtual void escribirEnFichero(const char* fichero); //esta clase no es abstracta
 };
 
+ostream& operator<< (ostream &out, const Alimento& a);
 
 #endif

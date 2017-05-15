@@ -26,3 +26,11 @@ void Alimento::Print() const
 	Producto::Print();
 	cout <<'\t' <<'\t' <<"Gramos: " << gramos<< endl;
 }
+
+ostream& operator<< (ostream &out, const Alimento &a) //: Producto (stream &out, const Alimento &a )
+{
+	out << a.getID()<< ": "<< a.getNombre() <<  '\t' <<"Precio: " << a.getprecioP() <<endl;
+	out << '\t' <<'\t' <<"Stock: " << a.getNum()<< endl;
+	out <<'\t' <<'\t' <<"Gramos: " << a.getGramos()<< endl;
+	
+}

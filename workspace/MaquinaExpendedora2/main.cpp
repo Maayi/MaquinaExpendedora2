@@ -9,30 +9,6 @@
 #include <vector>
 using namespace std;
 
-ostream& operator<< (ostream &out, const Producto &p)
-{
-	out << p.getID()<< ": "<< p.getNombre() <<  '\t' <<"Precio: " << p.getprecioP() << " Stock" << p.getNum()<< endl;
-	
-}
-
-ostream& operator<< (ostream &out, const Alimento &a) //: Producto (stream &out, const Alimento &a )
-{
-	out << a.getID()<< ": "<< a.getNombre() <<  '\t' <<"Precio: " << a.getprecioP() <<endl;
-	out << '\t' <<'\t' <<"Stock: " << a.getNum()<< endl;
-	out <<'\t' <<'\t' <<"Gramos: " << a.getGramos()<< endl;
-	
-}
-
-
-ostream& operator<< (ostream &out, const Bebida &b)
-{
-	out << b.getID()<< ": "<< b.getNombre() <<  '\t' <<"Precio: " << b.getprecioP() <<endl;
-	out << '\t' <<'\t' <<"Stock: " << b.getNum()<< endl;
-	out <<'\t' <<'\t' <<"Mililitros: " << b.getMiliL()<< endl;
-	out <<'\t' <<'\t' <<"Caracteristicas: " << b.getCar()<< endl;
-	
-}
-
 int main ()
 {
 
