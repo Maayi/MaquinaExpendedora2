@@ -1,6 +1,10 @@
 #ifndef EXPENDE_H_
 #define EXPENDE_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct inventario
 {
 	
@@ -35,5 +39,9 @@ void datosUsuarios();
 void liberarMemoria(Usuario *u, int total);
 void clear_if_needed(char *str);
 void introUsuario(Usuario *u, int total);
+
+#ifdef __cplusplus
+}  /* end of the 'extern "C"' block */
+#endif
 
 #endif
