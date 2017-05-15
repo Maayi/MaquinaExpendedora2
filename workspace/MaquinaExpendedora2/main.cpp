@@ -30,11 +30,12 @@ do
   cout << "6. Mostrar cambio" <<  endl;
   cout << "7. Reponer cambio" <<  endl;
   cout << "8. Retirar cambio" <<  endl;
-  cout << "9. Salir" <<  endl;
+  cout << "9. Ingreso admin" <<  endl;
+  cout << "10. Salir" <<  endl;
 
  
   scanf("%i",&opcion);                              // Capturo opcion del Menu
-  switch (opcion)
+ switch (opcion)
   {
     case 1: introUsuario(&usuario[total], total);
     break;
@@ -54,12 +55,19 @@ do
            break;
    case 8: reponer_retirar(3);                      // Retiro Monedas
            break;
-   case 9: break;                                   // Fin del Programa
+   case 9: ingresoAdmin();                             
+           //guardar();
+           break;
+
+   case 10: break;                                   // Fin del Programa
    default: printf("\nError, Ingrese una de las siete opciones\n\n");
-          
+            system("pause");
             break;     
   }
-}while(opcion!=9);
+}while(opcion!=10);
+
+
+
 
 
 	/*Producto p1 (1,"Mayi", 2.0, 10);
