@@ -42,6 +42,8 @@ void introUsuario(Usuario *u, int total);
 
 void ingresoAdmin();
 
+int menuAdmin();
+
 #ifdef __cplusplus
 }  /* end of the 'extern "C"' block */
 #endif

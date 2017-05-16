@@ -62,7 +62,45 @@ void datosUsuarios()
 {
 
 }
+int menuAdmin()
+{
 
+  int opcion;  
+int total = 0;
+  
+ // Usuario usuario[10];
+
+do  
+{
+  printf("\t1) Datos usuarios\n");
+  printf("\t2) Reponer Productos\n");
+  printf("\t3) Inventario Valorado\n"); 
+  printf("\t4) Reponer Cambio\n");
+
+
+  printf("\t5) Salir\n\n");
+  printf("     Seleccione una opcion: ");
+  scanf("%i",&opcion);                              // Capturo opcion del Menu
+  switch (opcion)
+  {
+    
+   case 2: reponer_retirar(1);                      // Repongo Productos
+           //guardar();
+           break;
+   case 3: invent_val_din(1);                       // Imprimo el Inventario de Productos
+           break;
+   case 4: invent_val_din(2);                       // Imprimo el Inventario de Dinero
+           break;
+
+
+   case 5: break;                                   // Fin del Programa
+   default: printf("\nError, Ingrese una de las siete opciones\n\n");
+            system("pause");
+            break;     
+  }
+}while(opcion!=5);
+
+}
 void ingresoAdmin()
 {
 char name[20];
@@ -72,7 +110,11 @@ scanf("%s",name);
 printf("Enter password: ");
 scanf("%s",password);
 if (strcmp(name, "Admin") == 0 && strcmp(password, "pass") == 0)
-printf("Access granted\n");
+{
+  printf("Access granted\n");
+  menuAdmin();
+}
+
 else printf("Access denied\n");
 
 
@@ -81,18 +123,22 @@ getch();
 
 void introUsuario(Usuario *u, int total)
 {
+
+ 
+
   Usuario usuario[10];
   char str[MAX_NUM];
   char frmt_str[MAX_NUM];
 
   printf("USUARIO (%d)\n", total + 1);
 
-  printf("DNI: ");
+  printf("Introduzca dni: ");
   fgets(str, MAX_NUM, stdin);
   clear_if_needed(str);
   sscanf(str, "%d", &u->dni);
 
-  printf("Nombre: ");
+ 
+  printf("Introduzca nombre: ");
   fgets(str, MAX_NUM, stdin);
   clear_if_needed(str);
   sscanf(str, "%s", frmt_str); //eliminar el \n final
@@ -311,4 +357,5 @@ else
   }
   printf("\n\t\tTotal de Cambio:\t %i\n\n",total);   
 }   }
+
 //system("pause");  } 

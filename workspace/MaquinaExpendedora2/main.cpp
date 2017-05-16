@@ -22,16 +22,15 @@ do
   //system("cls");   
   cout << "Maquina Expendedora" <<  endl;
   cout << "1. Introducir usuario" <<  endl;
-   cout << "2. Datos usuarioo" <<  endl;
-  cout << "3.Sacar producto" <<  endl;
-  cout << "4. Reponer productos" <<  endl;
-  cout << "5. Inventario valorado" <<  endl;
-  cout << "6. Mostrar cambio" <<  endl;
-  cout << "6. Mostrar cambio" <<  endl;
-  cout << "7. Reponer cambio" <<  endl;
-  cout << "8. Retirar cambio" <<  endl;
-  cout << "9. Ingreso admin" <<  endl;
-  cout << "10. Salir" <<  endl;
+  cout << "2. Datos usuario" <<  endl;
+  cout << "3. Sacar producto" <<  endl;
+//  cout << "4. Reponer productos" <<  endl;
+ // cout << "5. Inventario valorado" <<  endl;
+  cout << "4. Mostrar cambio" <<  endl;
+ // cout << "7. Reponer cambio" <<  endl;
+  cout << "5. Retirar cambio" <<  endl;
+  cout << "6. Ingreso admin" <<  endl;
+  cout << "7. Salir" <<  endl;
 
  
   scanf("%i",&opcion);                              // Capturo opcion del Menu
@@ -44,27 +43,27 @@ do
    case 3: refresco();                              // Compro Productos
            //guardar();
            break;
-   case 4: reponer_retirar(1);                      // Repongo Productos
+ /*  case 4: reponer_retirar(1);                      // Repongo Productos
            //guardar();
            break;
    case 5: invent_val_din(1);                       // Imprimo el Inventario de Productos
+           break;*/
+   case 4: invent_val_din(2);                       // Imprimo el Inventario de Dinero
            break;
-   case 6: invent_val_din(2);                       // Imprimo el Inventario de Dinero
+ //  case 7: reponer_retirar(2);                      // Repongo Monedas
+   //        break;
+   case 5: reponer_retirar(3);                      // Retiro Monedas
            break;
-   case 7: reponer_retirar(2);                      // Repongo Monedas
-           break;
-   case 8: reponer_retirar(3);                      // Retiro Monedas
-           break;
-   case 9: ingresoAdmin();                             
+   case 6: ingresoAdmin();                             
            //guardar();
            break;
 
-   case 10: break;                                   // Fin del Programa
+   case 7: break;                                   // Fin del Programa
    default: printf("\nError, Ingrese una de las siete opciones\n\n");
             system("pause");
             break;     
   }
-}while(opcion!=10);
+}while(opcion!=7);
 
 
 
