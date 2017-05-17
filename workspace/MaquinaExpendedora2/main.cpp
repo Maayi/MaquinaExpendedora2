@@ -2,6 +2,7 @@
 #include "Alimento.h"
 #include "Bebida.h"
 #include "Expende.h"
+#include "Usuario.h"
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
@@ -11,7 +12,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include "Usuario.h"
+
 using namespace std;
 
   struct stRegistro {
@@ -53,16 +54,11 @@ do
 {
   //system("cls");   
   cout << "Maquina Expendedora" <<  endl;
-  cout << "1. Introducir usuario" <<  endl;
-  cout << "2. Datos usuario" <<  endl;
-  cout << "3. Sacar producto" <<  endl;
-//  cout << "4. Reponer productos" <<  endl;
- // cout << "5. Inventario valorado" <<  endl;
-  cout << "4. Mostrar cambio" <<  endl;
- // cout << "7. Reponer cambio" <<  endl;
-  cout << "5. Retirar cambio" <<  endl;
-  cout << "6. Ingreso admin" <<  endl;
-  cout << "7. Salir" <<  endl;
+
+  cout << "1. Registro de usuario" <<  endl;
+  cout << "2. Log in de usuario" <<  endl;
+  cout << "3. Ingreso de Administrador" <<  endl;
+  cout << "4. Salir" <<  endl;
 
  
   scanf("%i",&opcion);                              // Capturo opcion del Menu
@@ -71,32 +67,20 @@ do
     case 1: Capturar(reg);
      Insertar(fa, reg);
     break;
-    case 2: datosUsuarios();
+
+    case 2: menuLogin();
     break;
-   case 3: refresco();                              // Compro Productos
-           //guardar();
-           break;
- /*  case 4: reponer_retirar(1);                      // Repongo Productos
-           //guardar();
-           break;
-   case 5: invent_val_din(1);                       // Imprimo el Inventario de Productos
-           break;*/
-   case 4: invent_val_din(2);                       // Imprimo el Inventario de Dinero
-           break;
- //  case 7: reponer_retirar(2);                      // Repongo Monedas
-   //        break;
-   case 5: reponer_retirar(3);                      // Retiro Monedas
-           break;
-   case 6: ingresoAdmin();                             
+    
+   case 3: ingresoAdmin();                             
            //guardar();
            break;
 
-   case 7: break;                                   // Fin del Programa
+   case 4: break;                                   // Fin del Programa
    default: printf("\nError, Ingrese una de las siete opciones\n\n");
             system("pause");
             break;     
   }
-}while(opcion!=7);
+}while(opcion!=4);
 
 
 
@@ -172,6 +156,8 @@ void Capturar(stRegistro &reg)
    printf("Teléfono: ");
    fgets(reg.telefono, 10, stdin);
    EliminarRetornoLinea(reg.telefono);
+
+   menuUsuario();
 }
 
 // Añade un registro al archivo de datos y reconstruye los índices

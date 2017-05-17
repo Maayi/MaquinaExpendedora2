@@ -63,6 +63,42 @@ void datosUsuarios()
 {
 
 }
+int menuUsuario()
+{
+
+  int opcion;  
+int total = 0;
+  
+ // Usuario usuario[10];
+
+do  
+{
+  printf("\t1) Sacar producto\n");
+  printf("\t2) Reponer Saldo\n");
+  printf("\t3) Salir\n\n"); 
+ 
+  printf("     Seleccione una opcion: ");
+  scanf("%i",&opcion);                              // Capturo opcion del Menu
+  switch (opcion)
+  {
+    
+   case 1: refresco();                         
+           
+           break;
+   case 2: invent_val_din(1);                       // Imprimo el Inventario de Productos
+           break;
+ 
+
+   case 3: break;                                   // Fin del Programa
+   default: printf("\nError, Ingrese una de las siete opciones\n\n");
+            system("pause");
+            break;     
+  }
+}while(opcion!=3);
+
+
+
+}
 int menuAdmin()
 {
 
@@ -77,9 +113,10 @@ do
   printf("\t2) Reponer Productos\n");
   printf("\t3) Inventario Valorado\n"); 
   printf("\t4) Reponer Cambio\n");
+  printf("\t5) Retirar Cambio\n");
 
 
-  printf("\t5) Salir\n\n");
+  printf("\t6) Salir\n\n");
   printf("     Seleccione una opcion: ");
   scanf("%i",&opcion);                              // Capturo opcion del Menu
   switch (opcion)
@@ -92,14 +129,16 @@ do
            break;
    case 4: invent_val_din(2);                       // Imprimo el Inventario de Dinero
            break;
+   case 5: reponer_retirar(3);                      // Retiro Monedas
+           break;
 
 
-   case 5: break;                                   // Fin del Programa
+   case 6: break;                                   // Fin del Programa
    default: printf("\nError, Ingrese una de las siete opciones\n\n");
             system("pause");
             break;     
   }
-}while(opcion!=5);
+}while(opcion!=6);
 
 }
 void ingresoAdmin()
@@ -122,48 +161,8 @@ else printf("Access denied\n");
 getch();
 }
 
-/*void introUsuario(Usuario *u, int total)
-{
 
- 
 
-  Usuario usuario[10];
-  char str[MAX_NUM];
-  char frmt_str[MAX_NUM];
-
-  printf("USUARIO (%d)\n", total + 1);
-
-  printf("Introduzca dni: ");
-  fgets(str, MAX_NUM, stdin);
-  clear_if_needed(str);
-  sscanf(str, "%d", &u->dni);
-
- 
-  printf("Introduzca nombre: ");
-  fgets(str, MAX_NUM, stdin);
-  clear_if_needed(str);
-  sscanf(str, "%s", frmt_str); //eliminar el \n final
-
-  //reservar la memoria justa para la cadena almacenada
-  u->nombre = (char *)malloc((strlen(frmt_str) + 1) * sizeof(char));
-  strcpy(u->nombre, frmt_str);
-
-   FILE* f2;
-  int b;
-  
-  //abrir fichero para escritura "w"
-  f2 = fopen("Usuarios.txt", "w");
-
-  fprintf(f2, "\t DNI \t\tNombre\n\n", MAX_NUM);
-  for (b = 0; b < MAX_NUM; b++)
-    fprintf(f2,"(%2i)\t\t\t%s\t\t %i\n",b+1,usuario[b].dni,usuario[b].nombre);
-  
-  //cerrar fichero
-  fclose(f2);
-
-  
-
-}*/
 void clear_if_needed(char *str)
 {
   if (str[strlen(str) - 1] != '\n')

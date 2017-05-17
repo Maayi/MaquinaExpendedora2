@@ -41,6 +41,7 @@ void clear_if_needed(char *str);
 //void introUsuario(Usuario *u, int total);
 
 void ingresoAdmin();
+int menuUsuario();
 
 int menuAdmin();
 
