@@ -20,13 +20,13 @@ int valor;
 int monedas;
 };
 
-typedef struct 
+/*typedef struct 
 {
 	int dni;
 	char *nombre;
 
 }Usuario;
-
+*/
 
 
 void invent_val_din(int caso);                      // Imprime los Inventarios de Bebidas y Monedas
@@ -34,11 +34,11 @@ void reponer_retirar(int caso);                     // Repone Cantidad de Bebida
 void refresco();                                    // Saca el Refresco y Entrega el Cambio
 void guardarProductos();
 void guardar();                                     //Guardar los datos en un fichero
-void introUsuario(Usuario *u, int total);
+//void introUsuario(Usuario *u, int total);
 void datosUsuarios();
-void liberarMemoria(Usuario *u, int total);
+//void liberarMemoria(Usuario *u, int total);
 void clear_if_needed(char *str);
-void introUsuario(Usuario *u, int total);
+//void introUsuario(Usuario *u, int total);
 
 void ingresoAdmin();
 

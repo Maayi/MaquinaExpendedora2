@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
+
 #define MAX_NUM 10
 #define ELEMENTOS
 
@@ -121,7 +122,7 @@ else printf("Access denied\n");
 getch();
 }
 
-void introUsuario(Usuario *u, int total)
+/*void introUsuario(Usuario *u, int total)
 {
 
  
@@ -162,7 +163,7 @@ void introUsuario(Usuario *u, int total)
 
   
 
-}
+}*/
 void clear_if_needed(char *str)
 {
   if (str[strlen(str) - 1] != '\n')
@@ -172,12 +173,12 @@ void clear_if_needed(char *str)
     }
 }
 
-void liberarMemoria(Usuario *u, int total)
+/*void liberarMemoria(Usuario *u, int total)
 {
   int i;
   for (i = 0; i < total; i++)
     free(u[i].nombre);
-}
+}*/
 void refresco()
 {
  
