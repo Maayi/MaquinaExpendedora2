@@ -4,11 +4,19 @@
 using namespace std;
 
 
+
 Bebida::Bebida(const int id, const char* nombreP, const float precioP, const int num, const int miliL, const char* car) : Producto (id, nombreP, precioP, num)
 {
 	this->miliL = miliL;
 	this -> car = new char [strlen(car) + 1];
 	strcpy(this->car, car);
+}
+Bebida::Bebida(const Bebida &b) : Producto (b)
+{
+	this->miliL = b.miliL;
+	this -> car = new char [strlen(b.car) + 1];
+	strcpy(this->car, b.car);
+
 }
 Bebida::~Bebida()
 {

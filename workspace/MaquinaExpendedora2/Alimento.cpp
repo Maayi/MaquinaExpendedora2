@@ -8,6 +8,11 @@ Alimento::Alimento(const int id, const char* nombreP, const float precioP, const
 {
 	this->gramos = gramos;
 }
+Alimento::Alimento (const Alimento &a) : Producto(a)
+{
+	this->gramos = gramos;
+	
+}
 int Alimento::getGramos() const
 {
 	return gramos;

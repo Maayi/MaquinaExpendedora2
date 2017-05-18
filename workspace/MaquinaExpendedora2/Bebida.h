@@ -13,7 +13,7 @@ private:
 	char* car; //característica
 
 public:
-	Bebida();
+	Bebida(const Bebida& b);
 	Bebida(const int id, const char* nombreP, const float precioP, const int num, const int miliL, const char* car);
 	virtual ~Bebida(); 
 

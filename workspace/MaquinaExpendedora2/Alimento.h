@@ -13,6 +13,7 @@ private:
 	int gramos;
 
 public:
+	Alimento (const Alimento &a);
 	Alimento(const int id, const char* nombreP, const float precioP, const int num, const int gramos);
 	//virtual ~Alimento(); ¿Tampoco lo necesitamos no?
 
