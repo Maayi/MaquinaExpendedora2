@@ -17,6 +17,7 @@
 
 using namespace std;
 
+  vector <Usuario> VectUsuarios;
   struct stRegistro {
    char valido;  // Campo que indica si el registro es valido S->Válido, N->Inválido
    char nombre[34];
@@ -36,9 +37,11 @@ void ReconstruirIndices(FILE *fa);
 void QuickSort(FILE *fa, long inicio, long final);
 char *LeeCampo(FILE *fa, long n, char *buf);
 void Intercambia(FILE *fa, long iz, long de);
+void GuardarEnFichero();
 
 int main ()
 {
+  vector <Usuario> VectUsuarios; 
   stRegistro reg;
    FILE *fa;
    int opcion;
@@ -67,7 +70,7 @@ do
  switch (opcion)
   {
     case 1: Capturar(reg);
-     Insertar(fa, reg);
+            Insertar(fa, reg);
     break;
 
     case 2: menuLogin();
@@ -151,7 +154,7 @@ void Capturar(stRegistro &reg)
 
    system("cls");
    cout << "Leer registro" << endl<<endl;
-   reg.valido = 'S';
+   //reg.valido = 'S';
 
    cout << "ID(num): ";
    cin >> id;
@@ -159,30 +162,43 @@ void Capturar(stRegistro &reg)
    cout << endl<<"Nombre: ";
    cin >> nom; 
    
-   fgets(reg.nombre, 34, stdin);
+   //fgets(reg.nombre, 34, stdin);
      
-   EliminarRetornoLinea(reg.nombre);
+   //EliminarRetornoLinea(reg.nombre);
 
    cout <<endl<< "Primer apellido: ";
-   fgets(reg.apellido[0], 34, stdin);
+   //fgets(reg.apellido[0], 34, stdin);
    cin >>ape1;
-   EliminarRetornoLinea(reg.apellido[0]);
+   //EliminarRetornoLinea(reg.apellido[0]);
 
    cout << endl <<"Segundo apellido: ";
-   fgets(reg.apellido[1], 34, stdin);
+   //fgets(reg.apellido[1], 34, stdin);
    cin >> ape2;
-   EliminarRetornoLinea(reg.apellido[1]);
+   //EliminarRetornoLinea(reg.apellido[1]);
 
    cout << endl << "Telefono: ";
-   fgets(reg.telefono, 10, stdin);
+   //fgets(reg.telefono, 10, stdin);
    cin >>telef;
-   EliminarRetornoLinea(reg.telefono);
+   //EliminarRetornoLinea(reg.telefono);
 
    Usuario u (id, nom, ape1, ape2, telef);
    cout << u;
-
+   VectUsuarios.push_back(u);
+   GuardarEnFichero();
    menuUsuario();
 } 
+
+void GuardarEnFichero()
+{
+  ofstream ofs("Usuarios.txt");
+  for (vector< Usuario>:: iterator i= VectUsuarios.begin(); i!= VectUsuarios.end(); i++)
+  {
+    ofs << *i << endl;
+  }
+  
+  ofs.close();
+
+}
 
 /* // comento el anterior por si necesitamos recuperar algo de aqui
 void Capturar(stRegistro &reg)

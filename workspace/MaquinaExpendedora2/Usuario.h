@@ -33,6 +33,7 @@ public:
 	void setApe1(const char* ape1);	
 	void setApe2(const char* ape2);	
 	void setTelefono( const int telef);
+	
 
 };
 

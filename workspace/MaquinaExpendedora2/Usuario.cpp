@@ -93,6 +93,7 @@ void Usuario::setTelefono( const int telef)
 
 }
 
+
 /* const char* Usuario::LeeNombre() const 
    {
       return nombre;
