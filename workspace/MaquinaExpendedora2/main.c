@@ -49,15 +49,10 @@ do
    case 3: refresco();                              // Compro Productos
            //guardar();
            break;
- /*  case 4: reponer_retirar(1);                      // Repongo Productos
-           //guardar();
-           break;*/
-  // case 5: invent_val_din(1);                       // Imprimo el Inventario de Productos
-    //       break;
+ 
    case 4: invent_val_din(2);                       // Imprimo el Inventario de Dinero
            break;
-   //case 7: reponer_retirar(2);                      // Repongo Monedas
-     //      break;
+
    case 5: reponer_retirar(3);                      // Retiro Monedas
            break;
    case 6: ingresoAdmin();                             

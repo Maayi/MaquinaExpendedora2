@@ -44,8 +44,8 @@ int main ()
    int opcion;
    char telefono[10];
 
-   fa = fopen("indices.dat", "r+b");          // Este modo permite leer y escribir
-   if(!fa) fa = fopen("indices.dat", "w+b");  // si el fichero no existe, lo crea.
+   fa = fopen("indices.txt", "r+b");          // Este modo permite leer y escribir
+   if(!fa) fa = fopen("indices.txt", "w+b");  // si el fichero no existe, lo crea.
 
  
 int total = 0;

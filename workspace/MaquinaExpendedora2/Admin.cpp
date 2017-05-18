@@ -36,7 +36,7 @@ Admin:: Admin(const char* password, const char* nombreA)
 {
 
 	string line;
-  ifstream myfile("indices.dat");
+  ifstream myfile("indices.txt");
   float precio = 0.0;
   int i = 1;
   int total2 = 0;
