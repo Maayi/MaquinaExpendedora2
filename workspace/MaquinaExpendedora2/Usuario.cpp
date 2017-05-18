@@ -10,11 +10,13 @@
 
 using namespace std;
 
-Usuario:: Usuario(const int dni, const char* nombre )
+Usuario:: Usuario(const int dni, const string nombre )
 {
 	this->dni = dni;
-	this->nombre = new char[strlen(nombre)+1];
-	strcpy(this->nombre, nombre);
+	// this->nombre = new char[strlen(nombre)+1];
+	// strcpy(this->nombre, nombre);
+
+  this-> nombre =nombre;
 
 }
 
@@ -33,7 +35,7 @@ return this->dni;
 
 }
 
-char* Usuario:: getNombre()const
+string Usuario:: getNombre()const
 {
 	return this->nombre;
 
@@ -45,7 +47,7 @@ void Usuario:: setDni(const int dni)
 this -> dni= dni;
 
 }
-void Usuario::setNombre( char* nombre)
+void Usuario::setNombre( const string nombre)
 {
 	this -> nombre = nombre;
 }
@@ -79,10 +81,14 @@ ostream& operator<<(ostream &os,const Usuario& reg)
 
 istream& operator>>(istream& in, Usuario& p) //aqui no hay this, esta fuera de la clase. Esta es funcion friend. Se salta la encapsulacion, por eso puedo hacer p.x y no hace falta p.getX
 {
+  string nombre;
+  int dni;
    cout << "Nombre: ";
-   cin >> p.nombre;
+   cin >> nombre;
+   p.setNombre(nombre);
    cout << "Dni: ";
-   cin >> p.dni;
+   cin >> dni;
+   p.setDni(dni);
   
    return in;  //siempre return in
 }

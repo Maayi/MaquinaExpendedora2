@@ -8,14 +8,12 @@ char *password;
 char *nombreA;
 
 public:
-	Admin(const char* password, const char* nombreU);
+	Admin(const char* password, const char* nombreA);
 	Admin (const Admin &u);
-	~Admin();
+	
 
-	char * getDni() const;
-	char * getNombre()const;
-	void setDni(char *password);
-	void setNombre(char *nombreU);
+	void datosUsuarios();
+
 
 
 	

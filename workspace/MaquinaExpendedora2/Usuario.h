@@ -8,27 +8,22 @@ using namespace std;
  
 class Usuario
 {
+private:
+	int dni;
+    string nombre;
 
 
 
 public:
-	Usuario(const int dni,const char* nombre);
+	Usuario(const int dni,const string nombre);
 	Usuario (const Usuario &u);
 	~Usuario();
-	int dni;
-char *nombre;
-
 	
-   /*const char* LeeNombre() const: 
- 
-   int LeeDni() const 
-   {return dni;}*/
-
 
 	int getDni() const;
-	char * getNombre()const;
+	string getNombre()const;
 	void setDni(const int dni);
-	void setNombre(char *nombreU);	
+	void setNombre(const string nombreU);	
 
 };
 

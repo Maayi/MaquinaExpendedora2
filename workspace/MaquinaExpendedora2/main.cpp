@@ -13,6 +13,8 @@
 #include <cstdlib>
 #include <cstring>
 
+#include "Admin.h"
+
 using namespace std;
 
   struct stRegistro {
@@ -104,7 +106,7 @@ do
 
 
 	string line;
-  ifstream myfile("Productos.txt");
+  ifstream myfile("indices.dat");
   float precio = 0.0;
   int i = 1;
   int total2 = 0;

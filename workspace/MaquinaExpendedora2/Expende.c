@@ -61,8 +61,9 @@ void guardarProductos ()
 }
 void datosUsuarios()
 {
+  }
+  
 
-}
 int menuUsuario()
 {
 
@@ -121,6 +122,7 @@ do
   scanf("%i",&opcion);                              // Capturo opcion del Menu
   switch (opcion)
   {
+    case 1: datosUsuarios(); break;
     
    case 2: reponer_retirar(1);                      // Repongo Productos
            //guardar();
