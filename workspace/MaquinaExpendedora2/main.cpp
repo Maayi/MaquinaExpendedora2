@@ -138,6 +138,53 @@ do
 }
 
 // Permite que el usuario introduzca un registro por pantalla
+void Capturar(stRegistro &reg) 
+{
+
+   int id;
+   char* nom= new char [34];
+   char* ape1 = new char [34];
+   char* ape2 = new char [34];
+   int telef;
+
+   char numero[6];
+
+   system("cls");
+   cout << "Leer registro" << endl<<endl;
+   reg.valido = 'S';
+
+   cout << "ID(num): ";
+   cin >> id;
+
+   cout << endl<<"Nombre: ";
+   cin >> nom; 
+   
+   fgets(reg.nombre, 34, stdin);
+     
+   EliminarRetornoLinea(reg.nombre);
+
+   cout <<endl<< "Primer apellido: ";
+   fgets(reg.apellido[0], 34, stdin);
+   cin >>ape1;
+   EliminarRetornoLinea(reg.apellido[0]);
+
+   cout << endl <<"Segundo apellido: ";
+   fgets(reg.apellido[1], 34, stdin);
+   cin >> ape2;
+   EliminarRetornoLinea(reg.apellido[1]);
+
+   cout << endl << "Telefono: ";
+   fgets(reg.telefono, 10, stdin);
+   cin >>telef;
+   EliminarRetornoLinea(reg.telefono);
+
+   Usuario u (id, nom, ape1, ape2, telef);
+   cout << u;
+
+   menuUsuario();
+} 
+
+/* // comento el anterior por si necesitamos recuperar algo de aqui
 void Capturar(stRegistro &reg)
 {
    int i;
@@ -161,6 +208,8 @@ void Capturar(stRegistro &reg)
 
    menuUsuario();
 }
+
+*/
 
 // Añade un registro al archivo de datos y reconstruye los índices
 void Insertar(FILE *fa, stRegistro &reg)

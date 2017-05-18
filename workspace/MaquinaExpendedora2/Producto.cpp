@@ -16,7 +16,7 @@ Producto:: Producto(const int id, const char* nombreP, const float precioP, cons
 Producto::Producto(const Producto& p)
 {
 	this->id =p.id;
-	this->nombreP= p.nombreP;
+	//this->nombreP= p.nombreP;
 	this ->precioP = p.precioP;
 	this ->num = p.num;
 }
@@ -47,7 +47,7 @@ void Producto::setID(const int id)
 
 void Producto::setNombre( char* nombre)
 {
-	this -> nombreP = nombre;
+	//this -> nombreP = nombre;
 }
 
 void Producto::setprecioP( const float precio)
