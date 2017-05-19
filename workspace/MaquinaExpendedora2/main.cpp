@@ -19,14 +19,16 @@
 
 using namespace std;
 
-vector <Usuario> VectUsuarios;
+
 int MenuIncial();
-void Capturar();
-void GuardarEnFichero();
-void LeerFichero();
+void Capturar(vector<Usuario> & VectUsuarios);
+void GuardarEnFichero(vector<Usuario> & VectUsuarios);
+void LeerFichero(vector<Usuario> & VectUsuarios);
+int  menuLogin(vector<Usuario> & VectUsuarios);
 
 int main ()
 {
+  vector <Usuario> VectUsuarios;
   int opcion;
   do  
   {   
@@ -34,14 +36,13 @@ int main ()
 
     switch (opcion)
     {
-      case 1: Capturar();
-              GuardarEnFichero();
-              LeerFichero();
-              menuUsuario();
+      case 1: Capturar(VectUsuarios); //Guardo en vectUsuario
+              GuardarEnFichero(VectUsuarios); //Guardo en Fichero Usuario.txt
+              menuUsuario(); //Llamo al menu del usuario
               break;
 
-      case 2: LeerFichero();
-              //menuLogin();
+      case 2: LeerFichero(VectUsuarios);
+              menuLogin(VectUsuarios);
               break;
     
       case 3: ingresoAdmin();                             
@@ -72,7 +73,7 @@ int MenuIncial()
 }
 
 // Permite que el usuario introduzca un registro por pantalla
-void Capturar() 
+void Capturar(vector<Usuario> & VectUsuarios) 
 {
 
    char* id= new char [34];
@@ -104,7 +105,7 @@ void Capturar()
     cout<< u;
    VectUsuarios.push_back(u);
 } 
-void LeerFichero()
+void LeerFichero(vector<Usuario> & VectUsuarios)
 {
   cout << "___________________LEYENDO FICHERO USUARIOS.TXT____________________"<< endl<< endl;
   VectUsuarios.clear();
@@ -141,6 +142,7 @@ void LeerFichero()
           telefono = atol(atributos[4].c_str());
           Usuario u (id, nom, ape1, ape2, telefono);
           cout<< u;
+          VectUsuarios.push_back(u);
           }
           else 
           {
@@ -158,7 +160,7 @@ void LeerFichero()
   cout << "_________________________________________" << endl;
 
 }
-void GuardarEnFichero()
+void GuardarEnFichero(vector<Usuario> & VectUsuarios)
 {
   ofstream ofs("Usuarios.txt");
   for (vector< Usuario>:: iterator i= VectUsuarios.begin(); i!= VectUsuarios.end(); i++)
@@ -169,3 +171,53 @@ void GuardarEnFichero()
   ofs.close();
 }
 
+int  menuLogin(vector<Usuario> & VectUsuarios)
+{
+string nombre;
+string dni;
+    cout << "Nombre:" <<  endl;
+    cin>> nombre;
+
+    cout << "Dni:" <<  endl;
+    cin>> dni;
+/*
+    for (vector< Usuario>:: iterator i= VectUsuarios.begin(); i!= VectUsuarios.end(); i++)
+    {
+      cout<< **i->getNombre() <<**i->getDni();
+
+  
+    string nomU = *i->getNombre();
+    String dniU= *i->getDni();
+    if (nomU == nombre && dniU == dni)
+    {
+      cout << '\t'<<"Bienvenido " << i*.getNombre()<< " " << i*.getApe1()<< endl;
+    }
+    else
+    {
+      cout <<"El dni o el nombre son incorrectos... Pruebe de nuevo:" <<endl;
+      menuLogin();
+    }
+    }*/
+    for (int i = 0; i<VectUsuarios.size(); i++)
+    {
+      string nomU = VectUsuarios[i].getNombre();
+      string dniU= VectUsuarios[i].getDni();
+      
+    if (nomU != nombre || dniU != dni)
+    {
+      cout <<"El dni o el nombre son incorrectos... Pruebe de nuevo:" <<endl;
+      menuLogin(VectUsuarios);
+    }
+    if ( nomU == nombre || dniU == dni)
+    {
+      cout << '\t'<<"Bienvenido " << VectUsuarios[i].getNombre()<< " " << VectUsuarios[i].getApe1()<< endl;
+      menuUsuario();
+      
+    }
+    }
+  
+
+
+
+ 
+}

@@ -47,14 +47,14 @@ Usuario::~Usuario()
 	delete [] ape1;
 	delete [] ape2;
 }
-char * Usuario::getDni() const
+char* Usuario::getDni() const
 {
 
 return this->dni;
 
 }
 
-char * Usuario::getNombre()const
+char* Usuario::getNombre()const
 {
 	return this->nombre;
 
@@ -145,16 +145,5 @@ istream& operator>>(istream& in, Usuario& p) //aqui no hay this, esta fuera de l
    p.setDni(dni);
   
    return in;  //siempre return in*/
-}
-int  menuLogin()
-{
-char* nombre;
-char * dni;
-    cout << "Nombre:" <<  endl;
-    cin>> nombre;
-
-  cout << "Dni:" <<  endl;
-  cin>> dni;
- 
 }
 

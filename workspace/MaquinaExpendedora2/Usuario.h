@@ -39,7 +39,6 @@ public:
 
 };
 
-int menuLogin();
 ostream& operator<< (ostream &out, const Usuario& u);
 
 
