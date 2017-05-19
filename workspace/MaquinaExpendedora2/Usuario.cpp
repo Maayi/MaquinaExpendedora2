@@ -11,6 +11,7 @@
 
 using namespace std;
 
+
 Usuario:: Usuario(const char* dni,const char * nombre,const char * ape1,const char * ape2 ,const long telef )
 {
 	this->dni= new char [strlen(dni)+1];
@@ -21,8 +22,8 @@ Usuario:: Usuario(const char* dni,const char * nombre,const char * ape1,const ch
 	strcpy(this->ape1, ape1);
 	this->ape2= new char [strlen(ape2)+1];
 	strcpy(this->ape2, ape2);
-	this->telefono = telefono;
-	cout << "He creado bien el usuario con el constructor por parametros"<< endl;
+	this->telefono = telef;
+
 
 }
 
@@ -120,21 +121,19 @@ void Usuario::setTelefono( const long telef)
    strcpy(dni, dni_);
 }*/
 ostream& operator<< (ostream &out, const Usuario &u)
-{
+{/*
 	out << u.getDni()<< ": "<< u.getNombre() << " " <<  u.getApe1()<<" "<<u.getApe2()<<endl;
 	out << "Telefono: " << u.getTelefono()<< endl;
-
-	
+*/
+	out << u.getDni()<< " "<< u.getNombre() << " " <<  u.getApe1()<<" "<<u.getApe2()<<" "<<u.getTelefono()<<endl;
 }
 
 
 
 istream& operator>>(istream& in, Usuario& p) //aqui no hay this, esta fuera de la clase. Esta es funcion friend. Se salta la encapsulacion, por eso puedo hacer p.x y no hace falta p.getX
 {
-	string s;
 	char c;
-	in >> p.dni>>c >> c >> p.nombre >> c>> p.ape1 >> c>>p.ape2>> s;
-	p.telefono = 0;
+	in >> p.dni>>c >> p.nombre >> c>> p.ape1 >> c>>p.ape2>>c >> p.telefono;
 	return in;
   /*string nombre;
   int dni;
