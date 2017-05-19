@@ -40,7 +40,7 @@ int main ()
               menuUsuario();
               break;
 
-      case 2: 
+      case 2: LeerFichero();
               //menuLogin();
               break;
     
@@ -106,9 +106,15 @@ void Capturar()
 } 
 void LeerFichero()
 {
-   string id, nom, ape1, ape2,telef;
-   //int telef;
-   //Usuario *u;
+  cout << "___________________LEYENDO FICHERO USUARIOS.TXT____________________"<< endl<< endl;
+  VectUsuarios.clear();
+  vector<string> atributos;
+  const char* id= new char [34];
+  const char* nom= new char [34];
+  const char* ape1 = new char [34];
+  const char* ape2 = new char [34];
+  long telefono=0;
+
   string line;
   string usuario;
   ifstream ifs("Usuarios.txt");
@@ -118,24 +124,38 @@ void LeerFichero()
   {
     
     usuario += line;
-   // usuario.push_back('\n');
-    cout<< "Usuario "<< i << ": "<<usuario<< endl;
+
+          istringstream iss(usuario);
+          string s;
+          while ( getline( iss, s, ' ' ) ) 
+          {
+              atributos.push_back(s);
+          }
+          if(atributos.size()<6)
+          {
+
+          id = atributos[0].c_str();
+          nom =atributos[1].c_str();
+          ape1 = atributos[2].c_str();
+          ape2=  atributos[3].c_str();
+          telefono = atol(atributos[4].c_str());
+          Usuario u (id, nom, ape1, ape2, telefono);
+          cout<< u;
+          }
+          else 
+          {
+            cout<< "USUARIO MAL REGISTRADO"<< endl;
+          }
+
+          atributos.clear();
+                    
+    //cout<< "Usuario "<< i << ": "<<usuario<< endl;
     usuario ="";
     i++;
   }
-  //for (string line;getline(ifs, line ); )
-  
-
-    //ifs>>id>>nom >> ape1 >> ape2>> telef;
-
-    
-    //ifs>> id;
-    //cout<< id;//<< " "<< nom << " " << ape1 << " "<< ape2 << " "<< telef<< endl;
-    //Usuario u (id, nom, ape1, ape2, telef);
-   // cout << u;
-  // VectUsuarios.push_back(u);
 
   ifs.close();
+  cout << "_________________________________________" << endl;
 
 }
 void GuardarEnFichero()
