@@ -36,12 +36,12 @@ int main ()
     {
       case 1: Capturar();
               GuardarEnFichero();
-              //LeerFichero();
+              LeerFichero();
               menuUsuario();
               break;
 
-      case 2: LeerFichero();
-      //menuLogin();
+      case 2: 
+              //menuLogin();
               break;
     
       case 3: ingresoAdmin();                             
@@ -118,8 +118,9 @@ void LeerFichero()
   {
     
     usuario += line;
-    usuario.push_back('\n');
+   // usuario.push_back('\n');
     cout<< "Usuario "<< i << ": "<<usuario<< endl;
+    usuario ="";
     i++;
   }
   //for (string line;getline(ifs, line ); )
@@ -142,7 +143,7 @@ void GuardarEnFichero()
   ofstream ofs("Usuarios.txt");
   for (vector< Usuario>:: iterator i= VectUsuarios.begin(); i!= VectUsuarios.end(); i++)
   {
-    ofs << *i << endl;
+    ofs << *i ;
   }
   
   ofs.close();
