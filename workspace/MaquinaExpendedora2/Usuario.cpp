@@ -6,13 +6,15 @@
 #include <stack>
 #include <vector>
 #include <fstream>
+#include <string>
 
 
 using namespace std;
 
-Usuario:: Usuario(const int dni,const char * nombre,const char * ape1,const char * ape2, const int telef )
+Usuario:: Usuario(const char* dni,const char * nombre,const char * ape1,const char * ape2 ,const long telef )
 {
-	this->dni = dni;
+	this->dni= new char [strlen(dni)+1];
+	strcpy(this->dni, dni);
 	this->nombre= new char [strlen(nombre)+1];
 	strcpy(this->nombre, nombre);
 	this->ape1= new char [strlen(ape1)+1];
@@ -20,13 +22,15 @@ Usuario:: Usuario(const int dni,const char * nombre,const char * ape1,const char
 	this->ape2= new char [strlen(ape2)+1];
 	strcpy(this->ape2, ape2);
 	this->telefono = telefono;
+	cout << "He creado bien el usuario con el constructor por parametros"<< endl;
 
 }
 
 Usuario::Usuario (const Usuario &u)
 {
 
-this->dni = u.dni;
+this->dni= new char [strlen(u.dni)+1];
+	strcpy(this->dni, u.dni);
 this->nombre= new char [strlen(u.nombre)+1];
 	strcpy(this->nombre, u.nombre);
 this->ape1= new char [strlen(u.ape1)+1];
@@ -37,11 +41,12 @@ this->telefono = u.telefono;
 }
 Usuario::~Usuario()
 {
+	delete [] dni;
 	delete [] nombre;
 	delete [] ape1;
 	delete [] ape2;
 }
-int Usuario::getDni() const
+char * Usuario::getDni() const
 {
 
 return this->dni;
@@ -61,14 +66,15 @@ char* Usuario::getApe2()const
 {
 	return this->ape2;
 }
-int Usuario::getTelefono() const
+long Usuario::getTelefono() const
 {
 	return this->telefono;
 }
 
-void Usuario::setDni(const int dni)
+void Usuario::setDni(const char * dni)
 {
-this -> dni= dni;
+this->dni= new char [strlen(dni)+1];
+	strcpy(this->dni, dni);
 
 }
 void Usuario::setNombre( const char* nombre)
@@ -87,7 +93,7 @@ void Usuario::setApe2(const char* ape2)
 	strcpy(this->ape2, ape2);
 
 }	
-void Usuario::setTelefono( const int telef)
+void Usuario::setTelefono( const long telef)
 {
 	this ->telefono = telef;
 
@@ -115,17 +121,22 @@ void Usuario::setTelefono( const int telef)
 }*/
 ostream& operator<< (ostream &out, const Usuario &u)
 {
-	out << u.getDni()<< ": "<< u.getNombre() <<  '\t' << u.getApe1()<<u.getApe2()<<endl;
-	out << '\t'  <<"Telefono: " << u.getTelefono()<< endl;
+	out << u.getDni()<< ": "<< u.getNombre() << " " <<  u.getApe1()<<" "<<u.getApe2()<<endl;
+	out << "Telefono: " << u.getTelefono()<< endl;
 
 	
 }
 
 
 
-/*istream& operator>>(istream& in, Usuario& p) //aqui no hay this, esta fuera de la clase. Esta es funcion friend. Se salta la encapsulacion, por eso puedo hacer p.x y no hace falta p.getX
+istream& operator>>(istream& in, Usuario& p) //aqui no hay this, esta fuera de la clase. Esta es funcion friend. Se salta la encapsulacion, por eso puedo hacer p.x y no hace falta p.getX
 {
-  string nombre;
+	string s;
+	char c;
+	in >> p.dni>>c >> c >> p.nombre >> c>> p.ape1 >> c>>p.ape2>> s;
+	p.telefono = 0;
+	return in;
+  /*string nombre;
   int dni;
    cout << "Nombre: ";
    cin >> nombre;
@@ -134,12 +145,12 @@ ostream& operator<< (ostream &out, const Usuario &u)
    cin >> dni;
    p.setDni(dni);
   
-   return in;  //siempre return in
-}*/
+   return in;  //siempre return in*/
+}
 int  menuLogin()
 {
-string nombre;
-int dni;
+char* nombre;
+char * dni;
     cout << "Nombre:" <<  endl;
     cin>> nombre;
 

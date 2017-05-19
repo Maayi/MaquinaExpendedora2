@@ -12,6 +12,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <string>
 
 #include "Admin.h"
 
@@ -38,6 +39,7 @@ void QuickSort(FILE *fa, long inicio, long final);
 char *LeeCampo(FILE *fa, long n, char *buf);
 void Intercambia(FILE *fa, long iz, long de);
 void GuardarEnFichero();
+void LeerFichero();
 
 int main ()
 {
@@ -71,6 +73,7 @@ do
   {
     case 1: Capturar(reg);
             Insertar(fa, reg);
+            
     break;
 
     case 2: menuLogin();
@@ -144,11 +147,11 @@ do
 void Capturar(stRegistro &reg) 
 {
 
-   int id;
+   char* id= new char [34];
    char* nom= new char [34];
    char* ape1 = new char [34];
    char* ape2 = new char [34];
-   int telef;
+   long telef;
 
    char numero[6];
 
@@ -156,7 +159,7 @@ void Capturar(stRegistro &reg)
    cout << "Leer registro" << endl<<endl;
    //reg.valido = 'S';
 
-   cout << "ID(num): ";
+   cout << "ID: ";
    cin >> id;
 
    cout << endl<<"Nombre: ";
@@ -182,12 +185,39 @@ void Capturar(stRegistro &reg)
    //EliminarRetornoLinea(reg.telefono);
 
    Usuario u (id, nom, ape1, ape2, telef);
-   cout << u;
+  
    VectUsuarios.push_back(u);
+
    GuardarEnFichero();
+   LeerFichero();
    menuUsuario();
 } 
+void LeerFichero()
+{
+  ifstream ifs("Usuarios.txt");
+  string line;
 
+  while(getline(ifs, line))
+  {
+    
+  
+    cout<< line <<endl;
+  }
+  
+ 
+  //ifs >> u;
+  //cout <<u;
+  //cout << file_hdr << endl;
+ /*while (!ifs.eof())
+  {
+    Usuario *u;
+    ifs >> *u;
+    cout << *u << endl;
+  }
+*/
+  ifs.close();
+
+}
 void GuardarEnFichero()
 {
   ofstream ofs("Usuarios.txt");
