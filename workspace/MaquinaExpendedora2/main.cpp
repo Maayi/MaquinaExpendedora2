@@ -29,6 +29,8 @@ int  menuLogin(vector<Usuario> & VectUsuarios);
 int main ()
 {
   vector <Usuario> VectUsuarios;
+  LeerFichero(VectUsuarios);
+  
   int opcion;
   do  
   {   
