@@ -35,7 +35,6 @@ void refresco();                                    // Saca el Refresco y Entreg
 void guardarProductos();
 void guardar();                                     //Guardar los datos en un fichero
 //void introUsuario(Usuario *u, int total);
-void datosUsuarios();
 //void liberarMemoria(Usuario *u, int total);
 void clear_if_needed(char *str);
 //void introUsuario(Usuario *u, int total);

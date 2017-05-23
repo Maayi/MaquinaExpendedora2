@@ -92,11 +92,12 @@ do
   printf("\t1) Datos usuarios\n");
   printf("\t2) Reponer Productos\n");
   printf("\t3) Inventario Valorado\n"); 
-  printf("\t4) Reponer Cambio\n");
-  printf("\t5) Retirar Cambio\n");
+  printf("\t4) Fichero txt de productos\n"); 
+  printf("\t5) Reponer Cambio\n");
+  printf("\t6) Retirar Cambio\n");
 
 
-  printf("\t6) Salir\n\n");
+  printf("\t7) Salir\n\n");
   printf("     Seleccione una opcion: ");
   scanf("%i",&opcion);                              // Capturo opcion del Menu
   switch (opcion)
@@ -109,19 +110,21 @@ do
            break;
    case 3: invent_val_din(1);                       // Imprimo el Inventario de Productos
            break;
-   case 4: invent_val_din(2);                       // Imprimo el Inventario de Dinero
+   case 4: guardarProductos();
+            break;
+   case 5: invent_val_din(2);                       // Imprimo el Inventario de Dinero
            break;
-   case 5: reponer_retirar(3);                      // Retiro Monedas
+   case 6: reponer_retirar(3);                      // Retiro Monedas
            break;
 
 
-   case 6: system("cls");
+   case 7: system("cls");
             break;                                   // Fin del Programa
    default: printf("\nError, Ingrese una de las siete opciones\n\n");
             system("pause");
             break;     
   }
-}while(opcion!=6);
+}while(opcion!=7);
 
 }
 

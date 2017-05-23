@@ -50,7 +50,7 @@ void guardarProductos ()
   f = fopen("Productos.txt", "w");
   
   //escribir en fichero un string formateado 
-  fprintf(f, "\t Codigo \t\tProducto\t\tPrecio\n\n", MAX_NUM);
+  fprintf(f, " Codigo \t\tProducto\t\tPrecio\n\n", MAX_NUM);
   for (a = 0; a < MAX_NUM; a++)
     fprintf(f,"(%2i)\t\t\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio);
   
@@ -76,8 +76,8 @@ int total = 0;
 do  
 {
   printf("\t1) Sacar producto\n");
-  printf("\t2) Reponer Saldo\n");
-  printf("\t3) Salir\n\n"); 
+  //printf("\t2) Reponer Saldo\n");
+  printf("\t2) Salir\n\n"); 
  
   printf("     Seleccione una opcion: ");
   scanf("%i",&opcion);                              // Capturo opcion del Menu
@@ -87,17 +87,17 @@ do
    case 1: refresco();                         
            
            break;
-   case 2: invent_val_din(1);                       // Imprimo el Inventario de Productos
+   /*case 2: invent_val_din(1);                       // Imprimo el Inventario de Productos
            break;
- 
+ */
 
-   case 3: system ("cls");
-   break;                                   // Fin del Programa
+   case 2: system ("cls");
+            break;                                   // Fin del Programa
    default: printf("\nError, Ingrese una de las siete opciones\n\n");
             system("pause");
             break;     
   }
-}while(opcion!=3);
+}while(opcion!=2);
 
 
 
