@@ -21,6 +21,8 @@ using namespace std;
 
 
 int MenuIncial();
+void IngresoAdmin(vector<Usuario> & VectUsuarios);
+void MenuAdmin(vector<Usuario> & VectUsuarios);
 void Capturar(vector<Usuario> & VectUsuarios);
 void GuardarEnFichero(vector<Usuario> & VectUsuarios);
 void LeerFichero(vector<Usuario> & VectUsuarios);
@@ -47,7 +49,7 @@ int main ()
               menuLogin(VectUsuarios);
               break;
     
-      case 3: ingresoAdmin();                             
+      case 3: IngresoAdmin(VectUsuarios);                             
             break;
 
       case 4: break;                                   // Fin del Programa
@@ -59,6 +61,67 @@ int main ()
   }while(opcion!=4);
 
 return 0;
+}
+void IngresoAdmin(vector<Usuario> & VectUsuarios)
+{
+string name;
+string pass;
+cout<< "Enter username:"<< endl;
+cin >> name;
+cout << "Enter password:"<< endl;
+cin>> pass;
+if (name == "Admin"&& pass== "pass")
+{
+  cout << "Access granted" <<endl;
+  MenuAdmin(VectUsuarios);
+}
+else cout <<"Access denied" << endl;
+}
+
+void MenuAdmin(vector<Usuario> & VectUsuarios)
+{
+
+  int opcion;  
+  int total = 0;
+  
+ // Usuario usuario[10];
+
+do  
+{
+  printf("\t1) Datos usuarios\n");
+  printf("\t2) Reponer Productos\n");
+  printf("\t3) Inventario Valorado\n"); 
+  printf("\t4) Reponer Cambio\n");
+  printf("\t5) Retirar Cambio\n");
+
+
+  printf("\t6) Salir\n\n");
+  printf("     Seleccione una opcion: ");
+  scanf("%i",&opcion);                              // Capturo opcion del Menu
+  switch (opcion)
+  {
+    case 1: LeerFichero(VectUsuarios); 
+    break;
+    
+   case 2: reponer_retirar(1);                      // Repongo Productos
+           //guardar();
+           break;
+   case 3: invent_val_din(1);                       // Imprimo el Inventario de Productos
+           break;
+   case 4: invent_val_din(2);                       // Imprimo el Inventario de Dinero
+           break;
+   case 5: reponer_retirar(3);                      // Retiro Monedas
+           break;
+
+
+   case 6: system("cls");
+            break;                                   // Fin del Programa
+   default: printf("\nError, Ingrese una de las siete opciones\n\n");
+            system("pause");
+            break;     
+  }
+}while(opcion!=6);
+
 }
 
 int MenuIncial()
@@ -143,7 +206,7 @@ void LeerFichero(vector<Usuario> & VectUsuarios)
           ape2=  atributos[3].c_str();
           telefono = atol(atributos[4].c_str());
           Usuario u (id, nom, ape1, ape2, telefono);
-          cout<< u;
+          cout<<'\t'<< '\t'<< u;
           VectUsuarios.push_back(u);
           }
           else 
@@ -159,7 +222,7 @@ void LeerFichero(vector<Usuario> & VectUsuarios)
   }
 
   ifs.close();
-  cout << "_________________________________________" << endl;
+  cout << "___________________________________________________________________" << endl;
 
 }
 void GuardarEnFichero(vector<Usuario> & VectUsuarios)
@@ -175,49 +238,41 @@ void GuardarEnFichero(vector<Usuario> & VectUsuarios)
 
 int  menuLogin(vector<Usuario> & VectUsuarios)
 {
+  bool correcto= false;
 string nombre;
+string apellido;
 string dni;
     cout << "Nombre:" <<  endl;
     cin>> nombre;
 
     cout << "Dni:" <<  endl;
     cin>> dni;
-/*
-    for (vector< Usuario>:: iterator i= VectUsuarios.begin(); i!= VectUsuarios.end(); i++)
-    {
-      cout<< **i->getNombre() <<**i->getDni();
 
-  
-    string nomU = *i->getNombre();
-    String dniU= *i->getDni();
-    if (nomU == nombre && dniU == dni)
-    {
-      cout << '\t'<<"Bienvenido " << i*.getNombre()<< " " << i*.getApe1()<< endl;
-    }
-    else
-    {
-      cout <<"El dni o el nombre son incorrectos... Pruebe de nuevo:" <<endl;
-      menuLogin();
-    }
-    }*/
     for (int i = 0; i<VectUsuarios.size(); i++)
     {
       string nomU = VectUsuarios[i].getNombre();
       string dniU= VectUsuarios[i].getDni();
       
-    if (nomU != nombre || dniU != dni)
+    if ( nomU == nombre && dniU == dni)
     {
-      cout <<"El dni o el nombre son incorrectos... Pruebe de nuevo:" <<endl;
-      menuLogin(VectUsuarios);
-    }
-    if ( nomU == nombre || dniU == dni)
-    {
-      cout << '\t'<<"Bienvenido " << VectUsuarios[i].getNombre()<< " " << VectUsuarios[i].getApe1()<< endl;
-      menuUsuario();
+      correcto = true;
+      apellido = VectUsuarios[i].getApe1();
+      break;
       
     }
+    else  correcto = false;
     }
-  
+    if (correcto == false)
+    { 
+      cout <<"El dni o el nombre son incorrectos... " <<endl<< endl;
+     }
+    else 
+    {
+      cout << '\t'<<"Bienvenido " << nombre << " " << apellido<< endl;
+      menuUsuario();
+
+    }  
+    
 
 
 

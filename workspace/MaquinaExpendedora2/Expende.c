@@ -91,7 +91,8 @@ do
            break;
  
 
-   case 3: break;                                   // Fin del Programa
+   case 3: system ("cls");
+   break;                                   // Fin del Programa
    default: printf("\nError, Ingrese una de las siete opciones\n\n");
             system("pause");
             break;     
