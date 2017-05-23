@@ -16,7 +16,7 @@ int main()
   fprintf(f, "Nuestra maquina expendedora consta de 7 operaciones; \n 1) Coger el producto que quiera de entre los que disponemos; primero elegira el producto y despues introducira las monedas necesarias (en caso de se pase le devolveremos el cambio)\n");
   fprintf(f, " 2) Reponer el stock de productos\n 3) Saca una lista de la valoracion del inventario\n 4) Muestra la cantidad que tenemos para dar el cambio \n 5) Reponer el cambio \n 6) Retirar el cambio\n 7)Salir del programa");
   fprintf(f, "\n\n------------------------------------------------------\n ");
-  fprintf(f, "\n Si tiene cualquier duda/ruego o sugerencia, pongase en contacto con: anneidigoras@opendeusto.es\n");
+  fprintf(f, "\n Si tiene cualquier duda/ruego o sugerencia, pongase en contacto con: anneidigoras@opendeusto.es, paula.elosegui@opendeusto.es o mayi.echeveste@opendeusto.es\n");
   fprintf(f, "------------------------------------------------------\n ");
 
 int opcion;  

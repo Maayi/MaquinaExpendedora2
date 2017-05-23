@@ -26,7 +26,7 @@ void MenuAdmin(vector<Usuario> & VectUsuarios);
 void Capturar(vector<Usuario> & VectUsuarios);
 void GuardarEnFichero(vector<Usuario> & VectUsuarios);
 void LeerFichero(vector<Usuario> & VectUsuarios);
-int  menuLogin(vector<Usuario> & VectUsuarios);
+int  IngresoCliente(vector<Usuario> & VectUsuarios);
 
 int main ()
 {
@@ -40,13 +40,14 @@ int main ()
 
     switch (opcion)
     {
-      case 1: Capturar(VectUsuarios); //Guardo en vectUsuario
+      case 1: system("cls");
+              Capturar(VectUsuarios); //Guardo en vectUsuario
               GuardarEnFichero(VectUsuarios); //Guardo en Fichero Usuario.txt
               menuUsuario(); //Llamo al menu del usuario
               break;
 
       case 2: LeerFichero(VectUsuarios);
-              menuLogin(VectUsuarios);
+              IngresoCliente(VectUsuarios);
               break;
     
       case 3: IngresoAdmin(VectUsuarios);                             
@@ -140,14 +141,17 @@ int MenuIncial()
 // Permite que el usuario introduzca un registro por pantalla
 void Capturar(vector<Usuario> & VectUsuarios) 
 {
-
+   bool repetido; 
    char* id= new char [34];
    char* nom= new char [34];
    char* ape1 = new char [34];
    char* ape2 = new char [34];
    long telef;
 
-   system("cls");
+  do
+  {
+   repetido = false;
+   
    cout << "Leer registro" << endl<<endl;
 
    cout << "ID: ";
@@ -155,24 +159,44 @@ void Capturar(vector<Usuario> & VectUsuarios)
 
    cout << endl<<"Nombre: ";
    cin >> nom; 
+   for (int i = 0; i<VectUsuarios.size(); i++)
+    {
+      string nomU = VectUsuarios[i].getNombre();
+      string dniU= VectUsuarios[i].getDni();
+      
+      if ( nomU == nom && dniU == id)
+      {
+        repetido = true;
+        break;
+      }
+    }
+    if (repetido == true)
+    {
+      cout << endl <<"El nombre e ID que has introducido pertencen al de otra persona dada de alta en nuestro sistema, prueba con otros datos por favor"<<endl << endl;
+    }
+    else
+    {
+      cout <<endl<< "Primer apellido: ";
+      cin >>ape1;
    
-   cout <<endl<< "Primer apellido: ";
-   cin >>ape1;
-   
-   cout << endl <<"Segundo apellido: ";
-   cin >> ape2;
+      cout << endl <<"Segundo apellido: ";
+      cin >> ape2;
   
-   cout << endl << "Telefono: ";
-   cin >>telef;
-  
+      cout << endl << "Telefono: ";
+      cin >>telef;
+      Usuario u (id, nom, ape1, ape2, telef);
+      cout<< u;
+      VectUsuarios.push_back(u);
+
+    }
    
-   Usuario u (id, nom, ape1, ape2, telef);
-    cout<< u;
-   VectUsuarios.push_back(u);
+
+    
+  }while (repetido ==true);
 } 
 void LeerFichero(vector<Usuario> & VectUsuarios)
 {
-  cout << "___________________LEYENDO FICHERO USUARIOS.TXT____________________"<< endl<< endl;
+  cout << endl <<"___________________LEYENDO FICHERO USUARIOS.TXT____________________"<< endl<< endl;
   VectUsuarios.clear();
   vector<string> atributos;
   const char* id= new char [34];
@@ -222,7 +246,7 @@ void LeerFichero(vector<Usuario> & VectUsuarios)
   }
 
   ifs.close();
-  cout << "___________________________________________________________________" << endl;
+  cout << "___________________________________________________________________" << endl<< endl;
 
 }
 void GuardarEnFichero(vector<Usuario> & VectUsuarios)
@@ -236,7 +260,7 @@ void GuardarEnFichero(vector<Usuario> & VectUsuarios)
   ofs.close();
 }
 
-int  menuLogin(vector<Usuario> & VectUsuarios)
+int  IngresoCliente(vector<Usuario> & VectUsuarios)
 {
   bool correcto= false;
 string nombre;
