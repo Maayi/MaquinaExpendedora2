@@ -131,7 +131,7 @@ do
            break;
    case 3: invent_val_din(1);                       // Imprimo el Inventario de Productos
            break;
-   case 4: invent_val_din(2);                       // Imprimo el Inventario de Dinero
+   case 4: reponer_retirar(2);                      // Imprimo el Inventario de Dinero
            break;
    case 5: reponer_retirar(3);                      // Retiro Monedas
            break;

@@ -112,7 +112,7 @@ do
            break;
    case 4: guardarProductos();
             break;
-   case 5: invent_val_din(2);                       // Imprimo el Inventario de Dinero
+   case 5: reponer_retirar(2);                       // Imprimo el Inventario de Dinero
            break;
    case 6: reponer_retirar(3);                      // Retiro Monedas
            break;
@@ -159,6 +159,8 @@ void Capturar(vector<Usuario> & VectUsuarios)
 
    cout << "ID: ";
    cin >> id;
+
+
 
    cout << endl<<"Nombre: ";
    cin >> nom; 
