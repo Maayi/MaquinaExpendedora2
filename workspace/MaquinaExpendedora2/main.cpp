@@ -14,6 +14,9 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
+#include "sqlite3.h"
+#include <stdio.h>
+#include <iostream>
 
 #include "Admin.h"
 
@@ -28,10 +31,33 @@ void GuardarEnFichero(vector<Usuario> & VectUsuarios);
 void LeerFichero(vector<Usuario> & VectUsuarios);
 int  IngresoCliente(vector<Usuario> & VectUsuarios);
 
-int main ()
+int main (int argc, const char * argv[])
 {
   vector <Usuario> VectUsuarios;
   LeerFichero(VectUsuarios);
+
+  sqlite3 *db;
+sqlite3_open("test.db", & db);
+
+
+
+  std:: string createQuery = "CREATE TABLE IF NOT EXISTS items (id TEXT PRIMARY KEY, nombre TEXT, ape1 TEXT,  ape2 TEXT, tele INTEGER NOT NULL DEFAULT (NOW()));";
+   sqlite3_stmt *createStmt;
+  cout << "Creating Table Statement" << endl;
+  sqlite3_prepare_v2(db, createQuery.c_str(), createQuery.size(), &createStmt, NULL);
+   cout << "Stepping Table Statement" << endl;
+   if (sqlite3_step(createStmt) != SQLITE_DONE) cout << "Didn't Create Table!" << endl;
+
+   string insertQuery = "INSERT INTO items (id,nombre, ape1 , ape2, tele) VALUES ('123', 'anne','idigoras','pagola','123');"; // WORKS!
+
+
+   sqlite3_stmt *insertStmt;
+   cout << "Creating Insert Statement" << endl;
+   sqlite3_prepare(db, insertQuery.c_str(), insertQuery.size(), &insertStmt, NULL);
+   cout << "Stepping Insert Statement" << endl;
+   if (sqlite3_step(insertStmt) != SQLITE_DONE) cout << "Didn't Insert Item!" << endl;
+
+cout << "Success!" << endl;
   
   int opcion;
   do  
