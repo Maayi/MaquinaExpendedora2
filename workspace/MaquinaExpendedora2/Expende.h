@@ -5,6 +5,7 @@
 extern "C" {
 #endif
 
+
 struct inventario
 {
 	
@@ -39,11 +40,11 @@ void guardar();                                     //Guardar los datos en un fi
 void clear_if_needed(char *str);
 //void introUsuario(Usuario *u, int total);
 
-void ingresoAdmin();
+//void ingresoAdmin();
 
 int menuUsuario();
 
-int menuAdmin();
+//int menuAdmin();
 
 #ifdef __cplusplus
 }  /* end of the 'extern "C"' block */

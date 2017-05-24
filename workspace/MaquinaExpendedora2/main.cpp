@@ -84,8 +84,6 @@ void MenuAdmin(vector<Usuario> & VectUsuarios)
 
   int opcion;  
   int total = 0;
-  
- // Usuario usuario[10];
 
 do  
 {
@@ -301,9 +299,5 @@ string dni;
       menuUsuario();
 
     }  
-    
-
-
-
- 
+     
 }
