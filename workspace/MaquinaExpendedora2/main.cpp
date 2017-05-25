@@ -31,21 +31,22 @@ void GuardarEnFichero(vector<Usuario> & VectUsuarios);
 void LeerFichero(vector<Usuario> & VectUsuarios);
 int  IngresoCliente(vector<Usuario> & VectUsuarios);
 
+
 int main (int argc, const char * argv[])
 {
   vector <Usuario> VectUsuarios;
   LeerFichero(VectUsuarios);
 
   sqlite3 *db;
-sqlite3_open("test.db", & db);
+sqlite3_open("user.db", & db);
 
 
 
   std:: string createQuery = "CREATE TABLE IF NOT EXISTS items (id TEXT PRIMARY KEY, nombre TEXT, ape1 TEXT,  ape2 TEXT, tele INTEGER NOT NULL DEFAULT (NOW()));";
    sqlite3_stmt *createStmt;
-  cout << "Creating Table Statement" << endl;
+  cout << "Creating Table Usuaio" << endl;
   sqlite3_prepare_v2(db, createQuery.c_str(), createQuery.size(), &createStmt, NULL);
-   cout << "Stepping Table Statement" << endl;
+   cout << "Stepping Table Usuario" << endl;
    if (sqlite3_step(createStmt) != SQLITE_DONE) cout << "Didn't Create Table!" << endl;
 
    string insertQuery = "INSERT INTO items (id,nombre, ape1 , ape2, tele) VALUES ('123', 'anne','idigoras','pagola','123');"; // WORKS!
@@ -136,7 +137,7 @@ do
            break;
    case 4: guardarProductos();
             break;
-   case 5: reponer_retirar(2);                       // Imprimo el Inventario de Dinero
+   case 5: reponer_retirar(2);                       // Repongo monedas
            break;
    case 6: reponer_retirar(3);                      // Retiro Monedas
            break;
@@ -186,14 +187,12 @@ void Capturar(vector<Usuario> & VectUsuarios)
 
 
 
-   cout << endl<<"Nombre: ";
-   cin >> nom; 
    for (int i = 0; i<VectUsuarios.size(); i++)
     {
-      string nomU = VectUsuarios[i].getNombre();
+     
       string dniU= VectUsuarios[i].getDni();
       
-      if ( nomU == nom && dniU == id)
+      if (  dniU == id)
       {
         repetido = true;
         break;
@@ -201,10 +200,14 @@ void Capturar(vector<Usuario> & VectUsuarios)
     }
     if (repetido == true)
     {
-      cout << endl <<"El nombre e ID que has introducido pertencen al de otra persona dada de alta en nuestro sistema, prueba con otros datos por favor"<<endl << endl;
+      cout << endl <<"El ID que has introducido pertencen al de otra persona dada de alta en nuestro sistema, prueba con otros datos por favor"<<endl << endl;
     }
     else
     {
+
+   cout << endl<<"Nombre: ";
+   cin >> nom; 
+
       cout <<endl<< "Primer apellido: ";
       cin >>ape1;
    
@@ -276,6 +279,10 @@ void LeerFichero(vector<Usuario> & VectUsuarios)
 
   ifs.close();
   cout << "___________________________________________________________________" << endl<< endl;
+
+
+
+
 
 }
 void GuardarEnFichero(vector<Usuario> & VectUsuarios)
