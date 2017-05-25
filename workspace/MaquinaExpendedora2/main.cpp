@@ -30,6 +30,7 @@ void Capturar(vector<Usuario> & VectUsuarios);
 void GuardarEnFichero(vector<Usuario> & VectUsuarios);
 void LeerFichero(vector<Usuario> & VectUsuarios);
 int  IngresoCliente(vector<Usuario> & VectUsuarios);
+int eliminarUsuario(vector<Usuario> & VectUsuarios);
 
 
 int main (int argc, const char * argv[])
@@ -120,9 +121,10 @@ do
   printf("\t4) Fichero txt de productos\n"); 
   printf("\t5) Reponer Cambio\n");
   printf("\t6) Retirar Cambio\n");
+  printf("\t7)Eliminar Usuario\n");
 
 
-  printf("\t7) Salir\n\n");
+  printf("\t8) Salir\n\n");
   printf("     Seleccione una opcion: ");
   scanf("%i",&opcion);                              // Capturo opcion del Menu
   switch (opcion)
@@ -141,15 +143,17 @@ do
            break;
    case 6: reponer_retirar(3);                      // Retiro Monedas
            break;
+    case 7 : eliminarUsuario(VectUsuarios);
+    break;
 
 
-   case 7: system("cls");
+   case 8: system("cls");
             break;                                   // Fin del Programa
    default: printf("\nError, Ingrese una de las siete opciones\n\n");
             system("pause");
             break;     
   }
-}while(opcion!=7);
+}while(opcion!=8);
 
 }
 
@@ -309,17 +313,17 @@ string dni;
     cin>> dni;
 
     for (int i = 0; i<VectUsuarios.size(); i++)
-    {
+     {
       string nomU = VectUsuarios[i].getNombre();
       string dniU= VectUsuarios[i].getDni();
       
     if ( nomU == nombre && dniU == dni)
-    {
+       {
       correcto = true;
       apellido = VectUsuarios[i].getApe1();
       break;
       
-    }
+       }
     else  correcto = false;
     }
     if (correcto == false)
@@ -334,3 +338,51 @@ string dni;
     }  
      
 }
+
+int eliminarUsuario (vector<Usuario> & VectUsuarios)
+{
+   bool correcto= false;
+string nombre;
+string apellido;
+string dni;
+    cout << "Nombre:" <<  endl;
+    cin>> nombre;
+
+    cout << "Dni:" <<  endl;
+    cin>> dni;
+
+    for (int i = 0; i<VectUsuarios.size(); i++)
+    {
+      string nomU = VectUsuarios[i].getNombre();
+      string dniU= VectUsuarios[i].getDni();
+      
+    if ( nomU == nombre && dniU == dni)
+      {
+      correcto = true;
+      apellido = VectUsuarios[i].getApe1();
+       cout << '\t'<<"Eliminando...." << nombre << " " << apellido<< endl;
+      
+      VectUsuarios.erase(VectUsuarios.begin()+i);
+
+      GuardarEnFichero(VectUsuarios);
+
+      break;
+      
+       }
+    else  correcto = false;
+     }
+    if (correcto == false)
+    { 
+      cout <<"El dni o el nombre son incorrectos... " <<endl<< endl;
+     }
+ 
+
+    
+
+
+
+  return 0;
+    
+
+    }
+
