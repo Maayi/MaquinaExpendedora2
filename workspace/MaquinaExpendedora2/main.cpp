@@ -347,7 +347,10 @@ string dni;
     else 
     {
       cout << '\t'<<"Bienvenido " << nombre << " " << apellido<< endl;
-      menuUsuario();
+      int result =0;
+      result =menuUsuario(); //Llamo al menu del usuario
+      int id = result;
+      if (id != -1) {guardoCompra(id);}
 
     }  
      
