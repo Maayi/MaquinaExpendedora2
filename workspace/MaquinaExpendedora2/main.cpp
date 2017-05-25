@@ -22,11 +22,11 @@
 
 using namespace std;
 void RegistroUsuario(vector<Usuario> & VectUsuarios);
-void guardoCompra(int id);
+void guardoCompra(int id,Usuario* u);
 int MenuIncial();
 void IngresoAdmin(vector<Usuario> & VectUsuarios);
 void MenuAdmin(vector<Usuario> & VectUsuarios);
-void Capturar(vector<Usuario> & VectUsuarios);
+Usuario* Capturar(vector<Usuario> & VectUsuarios);
 void GuardarEnFichero(vector<Usuario> & VectUsuarios);
 void LeerFichero(vector<Usuario> & VectUsuarios);
 int  IngresoCliente(vector<Usuario> & VectUsuarios);
@@ -91,18 +91,19 @@ return 0;
 }
 void RegistroUsuario(vector<Usuario> & VectUsuarios)
 {
+  Usuario * u;
   int result =0;
-  Capturar(VectUsuarios); //Guardo en vectUsuario
+  u = Capturar(VectUsuarios); //Guardo en vectUsuario
   GuardarEnFichero(VectUsuarios); //Guardo en Fichero Usuario.txt
   result =menuUsuario(); //Llamo al menu del usuario
   int id = result;
-  if (id != -1) {guardoCompra(id);}
+  if (id != -1) {guardoCompra(id, u);}
 
 }
 
-void guardoCompra(int id)
+void guardoCompra(int id, Usuario* u)
 {
-  printf("Producto comprado: %s Precio: %i\n",getNombre(id), getPrecio(id) );
+  printf("Producto comprado: %s Precio: %i por el usuario: %s\n",getNombre(id), getPrecio(id), u->getNombre() );
 }
 
 void IngresoAdmin(vector<Usuario> & VectUsuarios)
@@ -185,7 +186,7 @@ int MenuIncial()
 }
 
 // Permite que el usuario introduzca un registro por pantalla
-void Capturar(vector<Usuario> & VectUsuarios) 
+Usuario* Capturar(vector<Usuario> & VectUsuarios) 
 {
    bool repetido; 
    char* id= new char [34];
@@ -316,6 +317,7 @@ void GuardarEnFichero(vector<Usuario> & VectUsuarios)
 
 int  IngresoCliente(vector<Usuario> & VectUsuarios)
 {
+  Usuario *u;
   bool correcto= false;
 string nombre;
 string apellido;
@@ -333,6 +335,7 @@ string dni;
       
     if ( nomU == nombre && dniU == dni)
        {
+      *u = VectUsuarios[i];
       correcto = true;
       apellido = VectUsuarios[i].getApe1();
       break;
@@ -350,7 +353,7 @@ string dni;
       int result =0;
       result =menuUsuario(); //Llamo al menu del usuario
       int id = result;
-      if (id != -1) {guardoCompra(id);}
+      if (id != -1) {guardoCompra(id,u);}
 
     }  
      
