@@ -57,7 +57,7 @@ void guardarProductos ()
   //cerrar fichero
   fclose(f);
 
-  printf("Fichero \"Productos.txt creado correctamente en la carpeta de este programa\n");
+  printf("\nFichero \"Productos.txt\" creado correctamente en la carpeta de este programa\n\n");
 
 }
 
