@@ -21,8 +21,8 @@
 #include "Admin.h"
 
 using namespace std;
-
-
+void RegistroUsuario(vector<Usuario> & VectUsuarios);
+void guardoCompra(int id);
 int MenuIncial();
 void IngresoAdmin(vector<Usuario> & VectUsuarios);
 void MenuAdmin(vector<Usuario> & VectUsuarios);
@@ -59,8 +59,8 @@ sqlite3_open("user.db", & db);
    cout << "Stepping Insert Statement" << endl;
    if (sqlite3_step(insertStmt) != SQLITE_DONE) cout << "Didn't Insert Item!" << endl;
 
-cout << "Success!" << endl;
-  
+  cout << "Success!" << endl;
+ 
   int opcion;
   do  
   {   
@@ -69,9 +69,7 @@ cout << "Success!" << endl;
     switch (opcion)
     {
       case 1: system("cls");
-              Capturar(VectUsuarios); //Guardo en vectUsuario
-              GuardarEnFichero(VectUsuarios); //Guardo en Fichero Usuario.txt
-              menuUsuario(); //Llamo al menu del usuario
+              RegistroUsuario(VectUsuarios);
               break;
 
       case 2: LeerFichero(VectUsuarios);
@@ -91,6 +89,22 @@ cout << "Success!" << endl;
 
 return 0;
 }
+void RegistroUsuario(vector<Usuario> & VectUsuarios)
+{
+  int result =0;
+  Capturar(VectUsuarios); //Guardo en vectUsuario
+  GuardarEnFichero(VectUsuarios); //Guardo en Fichero Usuario.txt
+  result =menuUsuario(); //Llamo al menu del usuario
+  int id = result;
+  if (id != -1) {guardoCompra(id);}
+
+}
+
+void guardoCompra(int id)
+{
+  printf("Producto comprado: %s Precio: %i\n",getNombre(id), getPrecio(id) );
+}
+
 void IngresoAdmin(vector<Usuario> & VectUsuarios)
 {
 string name;

@@ -10,7 +10,7 @@
 //inventario *datos;
 //cambio *dinero;
 
-struct inventario datos[10]=                        // Inventario Inicial de Bebidas y Alimentos
+inventario datos[10]=                        // Inventario Inicial de Bebidas y Alimentos
 {
 
 1,10,"Coca Cola",2,
@@ -43,7 +43,7 @@ struct cambio dinero[10]=                     // Inventario Inicial de Monedas
 void guardarProductos ()
 {
 
-   FILE* f;
+  FILE* f;
   int a;
   
   //abrir fichero para escritura "w"
@@ -67,6 +67,7 @@ int menuUsuario()
 
 int opcion;  
 int total = 0;
+inventario * inv;
 do  
 {
   printf("\t1) Comprar producto\n");
@@ -78,8 +79,9 @@ do
   switch (opcion)
   {
     
-   case 1: refresco();                         
-           break;
+   case 1:  inv = refresco(); 
+   			return inv->id;                        
+            break;
 
    case 2: system ("cls");
             break;                                   // Fin del Programa
@@ -90,8 +92,19 @@ do
   }
 }while(opcion!=2);
 
+return -1;
+
 }
 
+char* getNombre(int id)
+{
+	return datos[id-1].nombres;
+
+}
+int getPrecio(int id)
+{
+	return datos[id-1].precio;
+}
 
 
 void clear_if_needed(char *str)
@@ -103,7 +116,7 @@ void clear_if_needed(char *str)
     }
 }
 
-void refresco()
+inventario * refresco()
 {
  
 int a,producto=0,ingreso=0,mon_tabla[10],cambio[10],total=0,saldo=0;   
@@ -180,6 +193,7 @@ else
     } 
     datos[producto-1].cantidad--;                       // Entrego el producto                                 
     printf("\n");   
+    return &datos[producto-1];
 
    }                                                                    
   }      
