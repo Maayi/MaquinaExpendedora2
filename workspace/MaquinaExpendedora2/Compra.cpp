@@ -1,4 +1,12 @@
 #include "Compra.h"
+#include <string.h>
+#include <iostream>
+#include <stdio.h>
+#include <iomanip>
+#include <stack>
+#include <vector>
+#include <fstream>
+#include <string>
 
 
 
@@ -66,13 +74,13 @@ Compra::~Compra()
 	}
 	void Compra::setIDP(const char* id)
 	{
-		this->idP= new char [strlen(c.idP)+1];
-		strcpy(this->idP, c.idP);
+		this->idP= new char [strlen(idP)+1];
+		strcpy(this->idP, idP);
 	}	
 	void Compra::setNombreP(const char* nombreP)
 	{
-		this->nombreP= new char [strlen(c.nombreP)+1];
-		strcpy(this->nombreP, c.nombreP);
+		this->nombreP= new char [strlen(nombreP)+1];
+		strcpy(this->nombreP, nombreP);
 	}	
 	
 istream& operator>>(istream& in, Compra& c)
