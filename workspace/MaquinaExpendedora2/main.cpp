@@ -39,28 +39,10 @@ int main (int argc, const char * argv[])
 
   LeerFichero(VectUsuarios);
 
-  sqlite3 *db;
-sqlite3_open("user.db", & db);
 
 
 
-  std:: string createQuery = "CREATE TABLE IF NOT EXISTS items (id TEXT PRIMARY KEY, nombre TEXT, ape1 TEXT,  ape2 TEXT, tele INTEGER NOT NULL DEFAULT (NOW()));";
-   sqlite3_stmt *createStmt;
-  cout << "Creating Table Usuaio" << endl;
-  sqlite3_prepare_v2(db, createQuery.c_str(), createQuery.size(), &createStmt, NULL);
-   cout << "Stepping Table Usuario" << endl;
-   if (sqlite3_step(createStmt) != SQLITE_DONE) cout << "Didn't Create Table!" << endl;
 
-   string insertQuery = "INSERT INTO items (id,nombre, ape1 , ape2, tele) VALUES ('123', 'anne','idigoras','pagola','123');"; // WORKS!
-
-
-   sqlite3_stmt *insertStmt;
-   cout << "Creating Insert Statement" << endl;
-   sqlite3_prepare(db, insertQuery.c_str(), insertQuery.size(), &insertStmt, NULL);
-   cout << "Stepping Insert Statement" << endl;
-   if (sqlite3_step(insertStmt) != SQLITE_DONE) cout << "Didn't Insert Item!" << endl;
-
-  cout << "Success!" << endl;
  
   int opcion;
   do  
@@ -92,6 +74,7 @@ return 0;
 }
 void RegistroUsuario(vector<Usuario> & VectUsuarios)
 {
+
   Usuario * u;
   int result =0;
   u = Capturar(VectUsuarios); //Guardo en vectUsuario
@@ -100,18 +83,20 @@ void RegistroUsuario(vector<Usuario> & VectUsuarios)
   int id = result;
   if (id != -1) {guardoCompra(id, u);}
 
+   
+
 }
 
 void guardoCompra(int id, Usuario* u)
 {
   printf("Producto comprado: %s Precio: %i por el usuario: %s\n",getNombre(id), getPrecio(id), u->getNombre() );
 
-  /*ofstream ofs("Compras.txt");
+  ofstream ofs("Compras.txt");
   
     ofs <<  u->getDni() <<u->getNombre()<< getNombre(id) << getPrecio(id);
   
   
-  ofs.close();*/
+  ofs.close();
 
 }
 
@@ -125,10 +110,10 @@ cout << "Enter password:"<< endl;
 cin>> pass;
 if (name == "Admin"&& pass== "pass")
 {
-  cout << "Access granted" <<endl;
+  cout << "Access válido" <<endl;
   MenuAdmin(VectUsuarios);
 }
-else cout <<"Access denied" << endl;
+else cout <<"Access denegado" << endl;
 }
 
 void MenuAdmin(vector<Usuario> & VectUsuarios)
@@ -204,6 +189,9 @@ Usuario* Capturar(vector<Usuario> & VectUsuarios)
    char* ape2 = new char [34];
    long telef;
 
+       sqlite3 *db;
+sqlite3_open("user.db", & db);
+
   do
   {
    repetido = false;
@@ -248,7 +236,28 @@ Usuario* Capturar(vector<Usuario> & VectUsuarios)
       cout<< u;
       VectUsuarios.push_back(u);
 
-    }
+     /* std:: string createQuery = "CREATE TABLE IF NOT EXISTS usuario (id TEXT PRIMARY KEY, nombre TEXT, ape1 TEXT,  ape2 TEXT, tele INTEGER NOT NULL DEFAULT (NOW()));";
+   sqlite3_stmt *createStmt;
+  cout << "Creating Table Usuaio" << endl;
+  sqlite3_prepare_v2(db, createQuery.c_str(), createQuery.size(), &createStmt, NULL);
+   cout << "Stepping Table Usuario" << endl;
+   if (sqlite3_step(createStmt) != SQLITE_DONE) cout << "Didn't Create Table!" << endl;
+
+ 
+string dni =std::string(id);
+
+   string insertQuery = "INSERT INTO usuario (id,nombre, ape1 , ape2, tele) VALUES (" << dni <<", '"<< std::string(nom) <<"', '"<< ape1 <<"', '"<< ape2<<"', '"<< telef <<"')";
+
+
+   sqlite3_stmt *insertStmt;
+   cout << "Creating Insert Statement" << endl;
+   sqlite3_prepare(db, insertQuery.c_str(), insertQuery.size(), &insertStmt, NULL);
+   cout << "Stepping Insert Statement" << endl;
+   if (sqlite3_step(insertStmt) != SQLITE_DONE) cout << "Didn't Insert Item!" << endl;
+
+  cout << "Success!" << endl;}*/
+}
+  
    
 
     
