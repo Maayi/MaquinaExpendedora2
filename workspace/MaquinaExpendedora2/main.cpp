@@ -36,6 +36,7 @@ int eliminarUsuario(vector<Usuario> & VectUsuarios);
 int main (int argc, const char * argv[])
 {
   vector <Usuario> VectUsuarios;
+
   LeerFichero(VectUsuarios);
 
   sqlite3 *db;
@@ -104,6 +105,14 @@ void RegistroUsuario(vector<Usuario> & VectUsuarios)
 void guardoCompra(int id, Usuario* u)
 {
   printf("Producto comprado: %s Precio: %i por el usuario: %s\n",getNombre(id), getPrecio(id), u->getNombre() );
+
+  /*ofstream ofs("Compras.txt");
+  
+    ofs <<  u->getDni() <<u->getNombre()<< getNombre(id) << getPrecio(id);
+  
+  
+  ofs.close();*/
+
 }
 
 void IngresoAdmin(vector<Usuario> & VectUsuarios)
