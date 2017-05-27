@@ -27,16 +27,17 @@ void guardoCompra(int id,Usuario* u);
 int MenuIncial();
 void IngresoAdmin(vector<Usuario> & VectUsuarios);
 void MenuAdmin(vector<Usuario> & VectUsuarios);
-Usuario* Capturar(vector<Usuario> & VectUsuarios);
+void Capturar(vector<Usuario> & VectUsuarios);
 void GuardarEnFichero(vector<Usuario> & VectUsuarios);
 void LeerFichero(vector<Usuario> & VectUsuarios);
 int  IngresoCliente(vector<Usuario> & VectUsuarios);
 int eliminarUsuario(vector<Usuario> & VectUsuarios);
 
  static vector <Compra> Compras;
+ static vector <Usuario> VectUsuarios;
 int main (int argc, const char * argv[])
 {
-  vector <Usuario> VectUsuarios;
+  
  
 
   LeerFichero(VectUsuarios);
@@ -79,13 +80,14 @@ void RegistroUsuario(vector<Usuario> & VectUsuarios)
 {
 
 
-  Usuario * u;
+  Usuario u = VectUsuarios.back();
   int result =0;
-  u = Capturar(VectUsuarios); //Guardo en vectUsuario
+  //*u = VectUsuarios.back();
+  Capturar(VectUsuarios); //Guardo en vectUsuario
   GuardarEnFichero(VectUsuarios); //Guardo en Fichero Usuario.txt
   result =menuUsuario(); //Llamo al menu del usuario
   int id = result;
-  if (id != -1) {guardoCompra(id, u);}
+  if (id != -1) {guardoCompra(id, &u);}
 
    
 
@@ -195,7 +197,7 @@ int MenuIncial()
 }
 
 // Permite que el usuario introduzca un registro por pantalla
-Usuario* Capturar(vector<Usuario> & VectUsuarios) 
+void Capturar(vector<Usuario> & VectUsuarios) 
 {
    bool repetido; 
    char* id= new char [34];
@@ -250,6 +252,7 @@ sqlite3_open("user.db", & db);
       Usuario u (id, nom, ape1, ape2, telef);
       cout<< u;
       VectUsuarios.push_back(u);
+      
 
      /* std:: string createQuery = "CREATE TABLE IF NOT EXISTS usuario (id TEXT PRIMARY KEY, nombre TEXT, ape1 TEXT,  ape2 TEXT, tele INTEGER NOT NULL DEFAULT (NOW()));";
    sqlite3_stmt *createStmt;
@@ -352,9 +355,10 @@ int  IngresoCliente(vector<Usuario> & VectUsuarios)
 {
   Usuario *u;
   bool correcto= false;
-string nombre;
-string apellido;
-string dni;
+  string nombre;
+  string apellido;
+  string dni;
+
     cout << "Nombre:" <<  endl;
     cin>> nombre;
 
@@ -371,8 +375,7 @@ string dni;
       *u = VectUsuarios[i];
       correcto = true;
       apellido = VectUsuarios[i].getApe1();
-      break;
-      
+      break;   
        }
     else  correcto = false;
     }
