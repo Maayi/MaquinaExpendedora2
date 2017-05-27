@@ -41,11 +41,6 @@ int main (int argc, const char * argv[])
  
 
   LeerFichero();
-
-
-
-
-
  
   int opcion;
   do  
@@ -55,6 +50,7 @@ int main (int argc, const char * argv[])
     switch (opcion)
     {
       case 1: system("cls");
+              //Capturar();
               RegistroUsuario();
               break;
 
