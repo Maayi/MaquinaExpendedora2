@@ -78,11 +78,11 @@ return 0;
 void RegistroUsuario()
 {
 
-
+  Capturar();
   Usuario u = VectUsuarios.back();
   int result =0;
   //*u = VectUsuarios.back();
-  Capturar(); //Guardo en vectUsuario
+ //Guardo en vectUsuario
   GuardarEnFichero(); //Guardo en Fichero Usuario.txt
   result =menuUsuario(); //Llamo al menu del usuario
   int id = result;
