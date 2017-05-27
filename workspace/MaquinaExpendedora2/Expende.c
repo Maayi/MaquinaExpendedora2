@@ -7,9 +7,6 @@
 #define MAX_NUM 10
 #define ELEMENTOS
 
-//inventario *datos;
-//cambio *dinero;
-
 inventario datos[10]=                        // Inventario Inicial de Bebidas y Alimentos
 {
 
@@ -39,7 +36,37 @@ struct cambio dinero[10]=                     // Inventario Inicial de Monedas
 100,10
 };    
 
-
+void FicheroProyecto()
+{
+  FILE *f;
+  f =fopen("Maquina Expendedora.txt","w");
+  fprintf(f, "------------------------------------------------------\n Autoras:Anne Idigoras y Mayi Echeveste\n");  
+  fprintf(f, "------------------------------------------------------\n ");
+  fprintf(f, "Bienvenidos a la maquina expendedora!\n\n");
+  fprintf(f, "A continuacion le vamos a explicar su funcionamiento:\n\n");
+  fprintf(f, "En el menu principal puede elegir como ingresar: \n");
+  fprintf(f,"\t (1) Si es usted un nuevo usuario de la maquina tiene que registrarse y desde ahi podrá realizar la compra que quiera\n");
+  fprintf(f,"\t (2) Si ya está dado de alta en nuestro sistema puede ingresar mediante su nombre y DNI\n");
+  fprintf(f,"\t (3) Si es usted el administrador puede ingresar mediante el usuario: Admin y contrasena: pass\n");
+  fprintf(f,"\t (4) Inserte el numero 4 del menu principal si quiere salir del programa\n");
+  fprintf(f,"Menu del Usuario: El usuario podra comprar productos y Salir del programa.\n");
+  fprintf(f,"\t REGISTRO: Una vez que se registre un usuario mediante ficheros (\'Usuarios.txt\') la informacion del usuario sera persistente.  Y podra iniciar sesion con sus datos mas adelante.\n");
+  fprintf(f,"\t COMPRA:  Funciona de la siguiente manera:\n");
+  fprintf(f,"\t\t Primero elegir el producto y despues introducir las monedas necesarias (en caso de se pase le devolveremos el cambio).\n");
+  fprintf(f,"\t\t La compra quedará registrada en el fichero \'Compras.txt\'.\n");
+  fprintf(f,"Menu del administrador: El administrador podra: \n");
+  fprintf(f, "\t Ver los datos de todos los usuarios registrados \n");
+  fprintf(f, "\t Eliminar los usuarios que quiera\n");
+    fprintf(f, "\t Sacar una lista actualizada del inventario de productos valorado\n");
+  fprintf(f, "\t Sacar un fichero con los productos que están actualmente en la maquina ( \'Productos.txt\')\n");
+  fprintf(f, "\t Reponer el cambio de monedas existente en la maquina\n");
+  fprintf(f, "\t Retirar el cambio\n");
+  fprintf(f, "\t Salir del programa\n");
+  fprintf(f, "\n\n------------------------------------------------------\n ");
+  fprintf(f, "\n Si tiene cualquier duda/ruego o sugerencia, pongase en contacto con: anneidigoras@opendeusto.es o mayi.echeveste@opendeusto.es\n");
+  fprintf(f, "------------------------------------------------------\n ");
+  fclose(f);
+}
 void guardarProductos ()
 {
 
@@ -92,7 +119,7 @@ do
   }
 }while(opcion!=2);
 
-return -1;
+return -1; // En caso de que no se haya comprado ningun producto devuelve -1
 
 }
 
@@ -121,7 +148,6 @@ inventario * refresco()
  
 int a,producto=0,ingreso=0,mon_tabla[10],cambio[10],total=0,saldo=0;   
 
-//system("cls");
 for (a=0;a<10;a++)
   mon_tabla[a]=cambio[a]=0;                         // Reseteo las Monedas Ingresadas por el Cliente y las que se le Entregaran por Cambio
 

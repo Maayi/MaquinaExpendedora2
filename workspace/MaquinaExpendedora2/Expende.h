@@ -20,6 +20,7 @@ int valor;
 int monedas;
 };
 
+void FicheroProyecto();
 char* getNombre(int id); //Para obtener el nombre de un producto del inventario pasandole su id
 int getPrecio(int id); //Para obtener el precio de un producto del inventario pasandole su id
 

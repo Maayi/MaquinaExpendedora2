@@ -38,7 +38,7 @@ int eliminarUsuario();
 int main (int argc, const char * argv[])
 {
   
- 
+  FicheroProyecto();
 
   LeerFichero();
  
