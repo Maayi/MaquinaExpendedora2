@@ -29,16 +29,19 @@ void IngresoAdmin();
 void MenuAdmin();
 void Capturar();
 void GuardarEnFichero();
+void LeerCompras();
 void LeerFichero();
 int  IngresoCliente();
 int eliminarUsuario();
 
- static vector <Compra> Compras;
+ static vector <Compra> VectCompras;
  static vector <Usuario> VectUsuarios;
 int main (int argc, const char * argv[])
 {
   
   FicheroProyecto();
+
+  LeerCompras();
 
   LeerFichero();
  
@@ -93,12 +96,12 @@ void guardoCompra(int id, Usuario* u)
 {
 
   Compra c (u->getDni(), u->getNombre(), id, getNombre(id));
-  Compras.push_back(c);
+  VectCompras.push_back(c);
 
 
   ofstream ofs("Compras.txt");
 
-  for (vector< Compra>:: iterator i= Compras.begin(); i!= Compras.end(); i++)
+  for (vector< Compra>:: iterator i= VectCompras.begin(); i!= VectCompras.end(); i++)
   {
     ofs << *i ;
   }
@@ -277,6 +280,65 @@ string dni =std::string(id);
     
   }while (repetido ==true);
 } 
+void LeerCompras()
+{
+  cout << endl <<"___________________LEYENDO FICHERO Compras.TXT____________________"<< endl<< endl;
+  VectCompras.clear();
+  vector<string> atributos;
+  const char* dniU= new char [34];
+  const char* nomU= new char [34];
+  int idP = 0;
+  const char* nomP = new char [34];
+ 
+
+  string line;
+  string compra;
+  ifstream ifs("Compras.txt");
+
+  int i=0;
+  while(getline(ifs, line))
+  {
+    
+    compra += line;
+
+          istringstream iss(compra);
+          string s;
+          while ( getline( iss, s, ' ' ) ) 
+          {
+              atributos.push_back(s);
+          }
+          if(atributos.size()<5)
+          {
+
+          dniU = atributos[0].c_str();
+          nomU=atributos[1].c_str();
+          idP = atol( atributos[2].c_str());
+          nomP=  atributos[3].c_str();
+          
+          Compra c (dniU, nomU, idP, nomP);
+          cout<<'\t'<< '\t'<< c;
+          VectCompras.push_back(c);
+          }
+          else 
+          {
+            cout<< "Compras MAL REGISTRADAS"<< endl;
+          }
+
+          atributos.clear();
+                    
+    //cout<< "Usuario "<< i << ": "<<usuario<< endl;
+    compra ="";
+    i++;
+  }
+
+  ifs.close();
+  cout << "___________________________________________________________________" << endl<< endl;
+
+
+
+
+
+}
 void LeerFichero()
 {
   cout << endl <<"___________________LEYENDO FICHERO USUARIOS.TXT____________________"<< endl<< endl;
