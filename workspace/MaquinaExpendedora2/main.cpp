@@ -66,7 +66,8 @@ int main (int argc, const char * argv[])
 
       case 4: break;                                   // Fin del Programa
 
-      default: printf("\nError, Ingrese una de las siete opciones\n\n");
+      default: cout<<"Error, Ingrese una de las siete opciones"<<endl;
+    
               system("pause");
               break;     
      }
@@ -119,7 +120,7 @@ cout << "Enter password:"<< endl;
 cin>> pass;
 if (name == "Admin"&& pass== "pass")
 {
-  cout << "Access válido" <<endl;
+  cout << "Access valido" <<endl;
   MenuAdmin(VectUsuarios);
 }
 else cout <<"Access denegado" << endl;
@@ -133,18 +134,23 @@ void MenuAdmin(vector<Usuario> & VectUsuarios)
 
 do  
 {
-  printf("\t1) Datos usuarios\n");
-  printf("\t2) Reponer Productos\n");
-  printf("\t3) Inventario Valorado\n"); 
-  printf("\t4) Fichero txt de productos\n"); 
-  printf("\t5) Reponer Cambio\n");
-  printf("\t6) Retirar Cambio\n");
-  printf("\t7)Eliminar Usuario\n");
+	cout<< "1) Datos usuarios"<< endl;
+	cout<< "2) Reponer Productos"<< endl;
+	cout<< "3) Inventario Valorado"<< endl;
+	cout<< "4) Fichero txt de productos"<< endl;
+	cout<< "5) Reponer Cambio"<< endl;
+	cout<< "6) Retirar Cambio"<< endl;
+	cout<< "7) Eliminar Usuario"<< endl;
+	cout<< "8) Salir"<< endl;
+
+	cout<< endl;
+	cout<<endl;
 
 
-  printf("\t8) Salir\n\n");
-  printf("     Seleccione una opcion: ");
-  scanf("%i",&opcion);                              // Capturo opcion del Menu
+ cout<< " Seleccione una opcion:"<< endl;
+
+   cin>> opcion;
+ // scanf("%i",&opcion);                              // Capturo opcion del Menu
   switch (opcion)
   {
     case 1: LeerFichero(VectUsuarios); 
@@ -167,7 +173,7 @@ do
 
    case 8: system("cls");
             break;                                   // Fin del Programa
-   default: printf("\nError, Ingrese una de las siete opciones\n\n");
+   default: cout<<"Error, Ingrese una de las siete opciones"<<endl;
             system("pause");
             break;     
   }
