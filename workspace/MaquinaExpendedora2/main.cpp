@@ -22,16 +22,16 @@
 #include "Admin.h"
 
 using namespace std;
-void RegistroUsuario(vector<Usuario> & VectUsuarios);
+void RegistroUsuario();
 void guardoCompra(int id,Usuario* u);
 int MenuIncial();
-void IngresoAdmin(vector<Usuario> & VectUsuarios);
-void MenuAdmin(vector<Usuario> & VectUsuarios);
-void Capturar(vector<Usuario> & VectUsuarios);
-void GuardarEnFichero(vector<Usuario> & VectUsuarios);
-void LeerFichero(vector<Usuario> & VectUsuarios);
-int  IngresoCliente(vector<Usuario> & VectUsuarios);
-int eliminarUsuario(vector<Usuario> & VectUsuarios);
+void IngresoAdmin();
+void MenuAdmin();
+void Capturar();
+void GuardarEnFichero();
+void LeerFichero();
+int  IngresoCliente();
+int eliminarUsuario();
 
  static vector <Compra> Compras;
  static vector <Usuario> VectUsuarios;
@@ -40,7 +40,7 @@ int main (int argc, const char * argv[])
   
  
 
-  LeerFichero(VectUsuarios);
+  LeerFichero();
 
 
 
@@ -55,14 +55,14 @@ int main (int argc, const char * argv[])
     switch (opcion)
     {
       case 1: system("cls");
-              RegistroUsuario(VectUsuarios);
+              RegistroUsuario();
               break;
 
-      case 2: LeerFichero(VectUsuarios);
-              IngresoCliente(VectUsuarios);
+      case 2: LeerFichero();
+              IngresoCliente();
               break;
     
-      case 3: IngresoAdmin(VectUsuarios);                             
+      case 3: IngresoAdmin();                             
             break;
 
       case 4: break;                                   // Fin del Programa
@@ -76,15 +76,15 @@ int main (int argc, const char * argv[])
 
 return 0;
 }
-void RegistroUsuario(vector<Usuario> & VectUsuarios)
+void RegistroUsuario()
 {
 
 
   Usuario u = VectUsuarios.back();
   int result =0;
   //*u = VectUsuarios.back();
-  Capturar(VectUsuarios); //Guardo en vectUsuario
-  GuardarEnFichero(VectUsuarios); //Guardo en Fichero Usuario.txt
+  Capturar(); //Guardo en vectUsuario
+  GuardarEnFichero(); //Guardo en Fichero Usuario.txt
   result =menuUsuario(); //Llamo al menu del usuario
   int id = result;
   if (id != -1) {guardoCompra(id, &u);}
@@ -112,7 +112,7 @@ void guardoCompra(int id, Usuario* u)
 
 }
 
-void IngresoAdmin(vector<Usuario> & VectUsuarios)
+void IngresoAdmin()
 {
 string name;
 string pass;
@@ -123,12 +123,12 @@ cin>> pass;
 if (name == "Admin"&& pass== "pass")
 {
   cout << "Access valido" <<endl;
-  MenuAdmin(VectUsuarios);
+  MenuAdmin();
 }
 else cout <<"Access denegado" << endl;
 }
 
-void MenuAdmin(vector<Usuario> & VectUsuarios)
+void MenuAdmin()
 {
 
   int opcion;  
@@ -155,7 +155,7 @@ do
  // scanf("%i",&opcion);                              // Capturo opcion del Menu
   switch (opcion)
   {
-    case 1: LeerFichero(VectUsuarios); 
+    case 1: LeerFichero(); 
     break;
     
    case 2: reponer_retirar(1);                      // Repongo Productos
@@ -169,7 +169,7 @@ do
            break;
    case 6: reponer_retirar(3);                      // Retiro Monedas
            break;
-    case 7 : eliminarUsuario(VectUsuarios);
+    case 7 : eliminarUsuario();
     break;
 
 
@@ -197,7 +197,7 @@ int MenuIncial()
 }
 
 // Permite que el usuario introduzca un registro por pantalla
-void Capturar(vector<Usuario> & VectUsuarios) 
+void Capturar() 
 {
    bool repetido; 
    char* id= new char [34];
@@ -281,7 +281,7 @@ string dni =std::string(id);
     
   }while (repetido ==true);
 } 
-void LeerFichero(vector<Usuario> & VectUsuarios)
+void LeerFichero()
 {
   cout << endl <<"___________________LEYENDO FICHERO USUARIOS.TXT____________________"<< endl<< endl;
   VectUsuarios.clear();
@@ -340,7 +340,7 @@ void LeerFichero(vector<Usuario> & VectUsuarios)
 
 
 }
-void GuardarEnFichero(vector<Usuario> & VectUsuarios)
+void GuardarEnFichero()
 {
   ofstream ofs("Usuarios.txt");
   for (vector< Usuario>:: iterator i= VectUsuarios.begin(); i!= VectUsuarios.end(); i++)
@@ -351,7 +351,7 @@ void GuardarEnFichero(vector<Usuario> & VectUsuarios)
   ofs.close();
 }
 
-int  IngresoCliente(vector<Usuario> & VectUsuarios)
+int  IngresoCliente()
 {
   Usuario *u;
   bool correcto= false;
@@ -395,7 +395,7 @@ int  IngresoCliente(vector<Usuario> & VectUsuarios)
      
 }
 
-int eliminarUsuario (vector<Usuario> & VectUsuarios)
+int eliminarUsuario ()
 {
    bool correcto= false;
 string nombre;
@@ -420,7 +420,7 @@ string dni;
       
       VectUsuarios.erase(VectUsuarios.begin()+i);
 
-      GuardarEnFichero(VectUsuarios);
+      GuardarEnFichero();
 
       break;
       
