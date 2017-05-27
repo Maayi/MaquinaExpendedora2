@@ -12,25 +12,25 @@ class Compra
 private:
 	char*  dniU;
 	char* nombreU;
-	char* idP;
+	int idP;
 	char* nombreP;
  
 
 public:
 	
-	Compra(const char* dni,const char * nombreU,const char * id,const char * nombreP);
+	Compra(const char* dni,const char * nombreU,const int  id,const char * nombreP);
 	Compra (const Compra &c);
 	~Compra();
 	
 
 	char* getDniU() const;
 	char* getNombreU()const;
-	char* getIDP()const;
+	int getIDP()const;
 	char* getNombreP()const;
 
 	void setDniU(const char* dni);
 	void setNombreU(const char* nombreU);	
-	void setIDP(const char* id);	
+	void setIDP(int id);	
 	void setNombreP(const char* nombreP);	
 	
 	friend istream& operator>>(istream& in, Compra& c);

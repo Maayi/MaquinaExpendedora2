@@ -10,14 +10,13 @@
 
 
 
-Compra::Compra(const char* dni,const char * nombreU,const char * id,const char * nombreP)
+Compra::Compra(const char* dni,const char * nombreU,const int id,const char * nombreP)
 {
 	this->dniU= new char [strlen(dni)+1];
 	strcpy(this->dniU, dni);
 	this->nombreU= new char [strlen(nombreU)+1];
 	strcpy(this->nombreU, nombreU);
-	this->idP= new char [strlen(id)+1];
-	strcpy(this->idP, id);
+	this->idP= id;
 	this->nombreP= new char [strlen(nombreP)+1];
 	strcpy(this->nombreP, nombreP);
 
@@ -28,8 +27,7 @@ Compra::Compra (const Compra &c)
 	strcpy(this->dniU, c.dniU);
 	this->nombreU= new char [strlen(c.nombreU)+1];
 	strcpy(this->nombreU, c.nombreU);
-	this->idP= new char [strlen(c.idP)+1];
-	strcpy(this->idP, c.idP);
+	this->idP=  c.idP;
 	this->nombreP= new char [strlen(c.nombreP)+1];
 	strcpy(this->nombreP, c.nombreP);
 
@@ -38,7 +36,6 @@ Compra::~Compra()
 {
 	delete[] dniU;
 	delete [] nombreP;
-	delete[] idP;
 	delete [] nombreU;
 
 }
@@ -53,7 +50,7 @@ Compra::~Compra()
 	{
 		return nombreU;
 	}
-	char* Compra::getIDP()const
+	int Compra::getIDP()const
 	{
 		return idP;
 	}
@@ -72,10 +69,9 @@ Compra::~Compra()
 		this->nombreU= new char [strlen(nombreU)+1];
 		strcpy(this->nombreU, nombreU);
 	}
-	void Compra::setIDP(const char* id)
+	void Compra::setIDP(const int id)
 	{
-		this->idP= new char [strlen(idP)+1];
-		strcpy(this->idP, idP);
+		this->idP= id;
 	}	
 	void Compra::setNombreP(const char* nombreP)
 	{
@@ -89,5 +85,5 @@ istream& operator>>(istream& in, Compra& c)
 }
 ostream& operator<< (ostream &out, const Compra& c)
 {
-
+	out << c.getDniU() << ": "<< c.getNombreU() << '\t' << c.getIDP()<< ": "<< c.getNombreP()<<endl;
 }

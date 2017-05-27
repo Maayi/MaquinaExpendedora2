@@ -3,6 +3,7 @@
 #include "Bebida.h"
 #include "Expende.h"
 #include "Usuario.h"
+#include "Compra.h"
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
@@ -32,10 +33,11 @@ void LeerFichero(vector<Usuario> & VectUsuarios);
 int  IngresoCliente(vector<Usuario> & VectUsuarios);
 int eliminarUsuario(vector<Usuario> & VectUsuarios);
 
-
+ static vector <Compra> Compras;
 int main (int argc, const char * argv[])
 {
   vector <Usuario> VectUsuarios;
+ 
 
   LeerFichero(VectUsuarios);
 
@@ -75,6 +77,7 @@ return 0;
 void RegistroUsuario(vector<Usuario> & VectUsuarios)
 {
 
+
   Usuario * u;
   int result =0;
   u = Capturar(VectUsuarios); //Guardo en vectUsuario
@@ -89,14 +92,20 @@ void RegistroUsuario(vector<Usuario> & VectUsuarios)
 
 void guardoCompra(int id, Usuario* u)
 {
-  printf("Producto comprado: %s Precio: %i por el usuario: %s\n",getNombre(id), getPrecio(id), u->getNombre() );
+
+  Compra c (u->getDni(), u->getNombre(), id, getNombre(id));
+  Compras.push_back(c);
+
 
   ofstream ofs("Compras.txt");
-  
-    ofs <<  u->getDni() <<u->getNombre()<< getNombre(id) << getPrecio(id);
-  
+
+  for (vector< Compra>:: iterator i= Compras.begin(); i!= Compras.end(); i++)
+  {
+    ofs << *i ;
+  }
   
   ofs.close();
+
 
 }
 
@@ -221,8 +230,8 @@ sqlite3_open("user.db", & db);
     else
     {
 
-   cout << endl<<"Nombre: ";
-   cin >> nom; 
+      cout << endl<<"Nombre: ";
+      cin >> nom; 
 
       cout <<endl<< "Primer apellido: ";
       cin >>ape1;
