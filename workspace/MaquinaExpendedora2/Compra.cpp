@@ -85,5 +85,5 @@ istream& operator>>(istream& in, Compra& c)
 }
 ostream& operator<< (ostream &out, const Compra& c)
 {
-	out << c.getDniU() << ": "<< c.getNombreU() << '\t' << c.getIDP()<< ": "<< c.getNombreP()<<endl;
+	out << c.getDniU() << " "<< c.getNombreU() << " " << c.getIDP()<< " "<< c.getNombreP()<<endl;
 }

@@ -44,7 +44,7 @@ int main (int argc, const char * argv[])
   
   FicheroProyecto();
 
-  //LeerCompras();
+  LeerCompras();
 
   LeerFichero();
  
@@ -94,8 +94,9 @@ void guardoCompra(int id, Usuario& u)
 
   ofstream ofs("Compras.txt");
 
-  for (vector< Compra>:: iterator i= VectCompras.begin(); i!= VectCompras.end(); i++)
+  for (vector<Compra>:: iterator i= VectCompras.begin(); i!= VectCompras.end(); i++)
   {
+    cout<< *i;
     ofs << *i ;
   }
   
@@ -288,7 +289,11 @@ void LeerCompras()
   const char* dniU= new char [34];
   const char* nomU= new char [34];
   int idP = 0;
-  const char* nomP = new char [34];
+  const char* nombreP = new char [34];
+  /*const char* nomP1 = new char [34];
+  const char* nomP2 = new char [34]; // Para los productos con nombres compuestos: ej: coca cola*/
+  
+
  
 
   string line;
@@ -313,16 +318,27 @@ void LeerCompras()
           dniU = atributos[0].c_str();
           nomU=atributos[1].c_str();
           idP = atoi( atributos[2].c_str());
-          nomP=  atributos[3].c_str();
+          nombreP = atributos[3].c_str();
           
-          Compra c (dniU, nomU, idP, nomP);
+          Compra c (dniU, nomU, idP, nombreP);
           cout<<'\t'<< '\t'<< c;
           VectCompras.push_back(c);
           }
-          else 
+          else if (atributos.size()<6) 
           {
-            cout<< "Compras MAL REGISTRADAS"<< endl;
+            
+          dniU = atributos[0].c_str();
+          nomU=atributos[1].c_str();
+          idP = atoi( atributos[2].c_str());
+          string nomP1 = atributos[3];
+          string nomP2 = atributos[4];
+          string nom= nomP1.append(" ").append(nomP2);
+          nombreP = nom.c_str();
+          Compra c (dniU, nomU, idP, nombreP);
+          cout<<'\t'<< '\t'<< c;
+          VectCompras.push_back(c);
           }
+          else cout<< "Compras MAL REGISTRADAS"<< endl;
 
           atributos.clear();
                     
@@ -334,6 +350,11 @@ void LeerCompras()
   ifs.close();
   cout << "___________________________________________________________________" << endl<< endl;
 
+
+for (vector<Compra>:: iterator i= VectCompras.begin(); i!= VectCompras.end(); i++)
+  {
+    cout<< *i;
+  }
 
 
 
@@ -502,10 +523,10 @@ string dni;
     do  
     {
      printf("\t1) Comprar producto\n");
-      printf("\t2) Salir\n\n"); 
+    printf("\t2) Salir\n\n"); 
   
-  printf("     Seleccione una opcion: ");
-  scanf("%i",&opcion);                              // Capturo opcion del Menu
+     printf("     Seleccione una opcion: ");
+      scanf("%i",&opcion);                              // Capturo opcion del Menu
 
   switch (opcion)
   {

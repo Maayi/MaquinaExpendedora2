@@ -183,7 +183,6 @@ else
     } 
     datos[producto-1].cantidad--;                       // Entrego el producto                                 
     printf("\n");   
-    printf("El id del prodcuto es: %i\n", &datos[producto-1].id);
     
     return producto;
 
