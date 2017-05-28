@@ -15,7 +15,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
-#include "sqlite3.h"
+//#include "sqlite3.h"
 #include <stdio.h>
 #include <iostream>
 
@@ -44,7 +44,7 @@ int main (int argc, const char * argv[])
   
   FicheroProyecto();
 
-  LeerCompras();
+ // LeerCompras();
 
   LeerFichero();
  
@@ -111,9 +111,9 @@ void IngresoAdmin()
 
 string name;
 string pass;
-cout<< "Enter username:"<< endl;
+cout<< "Nombre admin:"<< endl;
 cin >> name;
-cout << "Enter password:"<< endl;
+cout << "Password:"<< endl;
 cin>> pass;
 if (name == "Admin"&& pass== "pass")
 {
@@ -206,8 +206,8 @@ void Capturar()
    char* ape2 = new char [34];
    long telef;
 
-       sqlite3 *db;
-sqlite3_open("user.db", & db);
+      // sqlite3 *db;
+//sqlite3_open("user.db", & db);
 
   do
   {
