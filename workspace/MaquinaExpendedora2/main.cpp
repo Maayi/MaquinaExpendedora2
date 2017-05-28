@@ -282,24 +282,13 @@ void LeerCompras()
 
           istringstream iss(compra);
           string s;
-          while ( getline( iss, s, ' ' ) ) 
+          while ( getline( iss, s, ' ' )) 
           {
+            
+              
               atributos.push_back(s);
           }
-          if(atributos.size()<5)
-          {
 
-          dniU = atributos[0].c_str();
-          nomU=atributos[1].c_str();
-          idP = atoi( atributos[2].c_str());
-          nombreP = atributos[3].c_str();
-          
-          Compra c (dniU, nomU, idP, nombreP);
-          cout<<'\t'<< '\t'<< c;
-          VectCompras.push_back(c);
-          }
-          else if (atributos.size()<6) 
-          {
             
           dniU = atributos[0].c_str();
           nomU=atributos[1].c_str();
@@ -311,8 +300,6 @@ void LeerCompras()
           Compra c (dniU, nomU, idP, nombreP);
           cout<<'\t'<< '\t'<< c;
           VectCompras.push_back(c);
-          }
-          else cout<< "Compras MAL REGISTRADAS"<< endl;
 
           atributos.clear();
                     
