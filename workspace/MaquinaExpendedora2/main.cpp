@@ -55,7 +55,7 @@ int main (int argc, const char * argv[])
 
     switch (opcion)
     {
-      case 1: system("cls");
+      case 1:
               RegistroUsuario();
               break;
 
@@ -67,9 +67,8 @@ int main (int argc, const char * argv[])
 
       case 4: break;                                   // Fin del Programa
 
-      default: cout<<"Error, Ingrese una de las siete opciones"<<endl;
+      default: cout<<"Error, Ingrese una de las cuatro opciones"<<endl;
     
-              system("pause");
               break;     
      }
   }while(opcion!=4);
@@ -107,6 +106,8 @@ void guardoCompra(int id, Usuario& u)
 
 void IngresoAdmin()
 {
+
+
 string name;
 string pass;
 cout<< "Enter username:"<< endl;
@@ -174,7 +175,7 @@ do
    case 9: system("cls");
             break;                                   // Fin del Programa
    default: cout<<"Error, Ingrese una de las siete opciones"<<endl;
-            system("pause");
+            
             break;     
   }
 }while(opcion!=9);
@@ -311,7 +312,7 @@ void LeerCompras()
 
           dniU = atributos[0].c_str();
           nomU=atributos[1].c_str();
-          idP = atol( atributos[2].c_str());
+          idP = atoi( atributos[2].c_str());
           nomP=  atributos[3].c_str();
           
           Compra c (dniU, nomU, idP, nomP);
@@ -415,6 +416,7 @@ int  IngresoCliente()
   string nombre;
   string apellido;
   string dni;
+  LeerFichero();
 
     cout << "Nombre:" <<  endl;
     cin>> nombre;
@@ -515,8 +517,8 @@ string dni;
    case 2: system ("cls");
             break;                                   // Fin del Programa
 
-   default: printf("\nError, Ingrese una de las siete opciones\n\n");
-            system("pause");
+   default: printf("\nError, Ingrese una de las dos opciones\n\n");
+            
             break;     
   }
 }while(opcion!=2);
