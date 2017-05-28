@@ -15,11 +15,11 @@ struct inventario datos[10]=                        // Inventario Inicial de Beb
 3,10,"Bifrutas",3,
 4,10,"Red Bull",4,
 5,10,"Heineken",3,
-6,10,"KitKat   ",1,
-7,10,"Oreo    ",2,
+6,10,"KitKat",1,
+7,10,"Oreo",2,
 8,10,"Snickers",2,
 9,10,"Principe",3,
-10,10,"Nestea    ",3     
+10,10,"Nestea",3     
 };
 
 struct cambio dinero[10]=                     // Inventario Inicial de Monedas
