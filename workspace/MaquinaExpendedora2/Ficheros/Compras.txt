@@ -1,1 +1,10 @@
-01 Lorea 1 Coca Cola
+123 anne 5 Heineken
+1 pepe 3 Bifrutas
+123 anne 9 Principe
+321 3 5 Heineken
+12 mayi 8 Snickers
+1234 mayi 5 Heineken
+12345 asdf 8 Snickers
+7 7 9 Principe
+7 7 3 Bifrutas
+123 anne 2 Pepsi Cola
