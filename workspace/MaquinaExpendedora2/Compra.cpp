@@ -81,7 +81,9 @@ Compra::~Compra()
 	
 istream& operator>>(istream& in, Compra& c)
 {
-
+	char a;
+	in >> c.dniU >> a >> c.nombreU >> a>> c.idP >> a >>c.nombreP;
+	return in;
 }
 ostream& operator<< (ostream &out, const Compra& c)
 {
