@@ -1,0 +1,32 @@
+------------------------------------------------------
+ Autoras:Anne Idigoras y Mayi Echeveste
+------------------------------------------------------
+ Bienvenidos a la maquina expendedora!
+
+A continuacion le vamos a explicar su funcionamiento:
+
+En el menu principal puede elegir como ingresar: 
+	 (1) Si es usted un nuevo usuario de la maquina tiene que registrarse y desde ahi podrá realizar la compra que quiera
+	 (2) Si ya está dado de alta en nuestro sistema puede ingresar mediante su nombre y DNI
+	 (3) Si es usted el administrador puede ingresar mediante el usuario: Admin y contrasena: pass
+	 (4) Inserte el numero 4 del menu principal si quiere salir del programa
+Menu del Usuario: El usuario podra comprar productos y Salir del programa.
+	 REGISTRO: Una vez que se registre un usuario mediante ficheros ('Usuarios.txt') la informacion del usuario sera persistente.  Y podra iniciar sesion con sus datos mas adelante.
+	 COMPRA:  Funciona de la siguiente manera:
+		 Primero elegir el producto y despues introducir las monedas necesarias (en caso de se pase le devolveremos el cambio).
+		 La compra quedará registrada en el fichero 'Compras.txt'.
+Menu del administrador: El administrador podra: 
+	 Ver los datos de todos los usuarios registrados 
+	 Eliminar los usuarios que quiera
+	 Sacar una lista actualizada del inventario de productos valorado
+	 Sacar un fichero con los productos que están actualmente en la maquina ( 'Productos.txt')
+	 Reponer el cambio de monedas existente en la maquina
+	 Retirar el cambio
+	 Salir del programa
+
+
+------------------------------------------------------
+ 
+ Si tiene cualquier duda/ruego o sugerencia, pongase en contacto con: anneidigoras@opendeusto.es o mayi.echeveste@opendeusto.es
+------------------------------------------------------
+ 
