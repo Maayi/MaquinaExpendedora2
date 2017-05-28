@@ -27,11 +27,11 @@ int getPrecio(int id); //Para obtener el precio de un producto del inventario pa
 void invent_val_din(int caso);                      // Imprime los Inventarios de Bebidas y Monedas
 
 void reponer_retirar(int caso);                     // Repone Cantidad de Bebidas y Monedas y Retira Monedas
-inventario* refresco();                                    // Saca el Refresco y Entrega el Cambio Devuelve el producto que se ha retirado.
+int refresco();                                    // Saca el Refresco y Entrega el Cambio Devuelve el producto que se ha retirado.
 void guardarProductos();
-void guardar();                                     //Guardar los datos en un fichero
+//void guardar();                                     //Guardar los datos en un fichero
 void clear_if_needed(char *str);
-int menuUsuario();
+//int menuUsuario();
 
 #ifdef __cplusplus
 }  /* end of the 'extern "C"' block */

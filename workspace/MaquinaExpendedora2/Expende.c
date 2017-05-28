@@ -39,7 +39,7 @@ struct cambio dinero[10]=                     // Inventario Inicial de Monedas
 void FicheroProyecto()
 {
   FILE *f;
-  f =fopen("Maquina Expendedora.txt","w");
+  f =fopen("Ficheros/Maquina Expendedora.txt","w");
   fprintf(f, "------------------------------------------------------\n Autoras:Anne Idigoras y Mayi Echeveste\n");  
   fprintf(f, "------------------------------------------------------\n ");
   fprintf(f, "Bienvenidos a la maquina expendedora!\n\n");
@@ -89,7 +89,7 @@ void guardarProductos ()
 }
 
   
-int menuUsuario()
+/*int menuUsuario()
 {
 
 int opcion;  
@@ -121,7 +121,7 @@ do
 
 return -1; // En caso de que no se haya comprado ningun producto devuelve -1
 
-}
+}*/
 
 char* getNombre(int id)
 {
@@ -143,7 +143,7 @@ void clear_if_needed(char *str)
     }
 }
 
-inventario * refresco()
+int refresco()
 {
  
 int a,producto=0,ingreso=0,mon_tabla[10],cambio[10],total=0,saldo=0;   
@@ -219,12 +219,12 @@ else
     } 
     datos[producto-1].cantidad--;                       // Entrego el producto                                 
     printf("\n");   
-    return &datos[producto-1];
+    return (int) &datos[producto-1].id;
 
    }                                                                    
   }      
 }    
-
+return -1;
 
 }
 

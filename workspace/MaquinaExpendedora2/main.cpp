@@ -22,6 +22,7 @@
 #include "Admin.h"
 
 using namespace std;
+void MenuUsuario(Usuario &u);
 void RegistroUsuario();
 void guardoCompra(int id,Usuario* u);
 int MenuIncial();
@@ -53,16 +54,14 @@ int main (int argc, const char * argv[])
     switch (opcion)
     {
       case 1: system("cls");
-              //Capturar();
               RegistroUsuario();
               break;
 
-      case 2: LeerFichero();
-              IngresoCliente();
+      case 2: IngresoCliente();
               break;
     
       case 3: IngresoAdmin();                             
-            break;
+              break;
 
       case 4: break;                                   // Fin del Programa
 
@@ -75,6 +74,7 @@ int main (int argc, const char * argv[])
 
 return 0;
 }
+
 void RegistroUsuario()
 {
 
@@ -84,9 +84,9 @@ void RegistroUsuario()
   //*u = VectUsuarios.back();
  //Guardo en vectUsuario
   GuardarEnFichero(); //Guardo en Fichero Usuario.txt
-  result =menuUsuario(); //Llamo al menu del usuario
-  int id = result;
-  if (id != -1) {guardoCompra(id, &u);}
+  MenuUsuario(u); //Llamo al menu del usuario
+  
+ 
 
    
 
@@ -169,8 +169,9 @@ do
            break;
    case 6: reponer_retirar(3);                      // Retiro Monedas
            break;
-    case 7 : eliminarUsuario();
-    break;
+    case 7 : LeerFichero();
+            eliminarUsuario();
+            break;
 
     case 8: LeerCompras();
     break;
@@ -286,7 +287,7 @@ string dni =std::string(id);
 } 
 void LeerCompras()
 {
-  cout << endl <<"___________________LEYENDO FICHERO Compras.TXT____________________"<< endl<< endl;
+  cout << endl <<"_________________________FICHERO Compras.TXT____________________"<< endl<< endl;
   VectCompras.clear();
   vector<string> atributos;
   const char* dniU= new char [34];
@@ -449,9 +450,8 @@ int  IngresoCliente()
     {
       cout << '\t'<<"Bienvenido " << nombre << " " << apellido<< endl;
       int result =0;
-      result =menuUsuario(); //Llamo al menu del usuario
-      int id = result;
-      if (id != -1) {guardoCompra(id,u);}
+      MenuUsuario(*u); //Llamo al menu del usuario
+    
 
     }  
      
@@ -503,4 +503,36 @@ string dni;
     
 
     }
+    void MenuUsuario(Usuario &u)
+    {
+
+    int opcion;  
+    int total = 0;
+    int idP; //id del producto comprado en caso de que exista una compra;
+    
+    do  
+    {
+     printf("\t1) Comprar producto\n");
+      printf("\t2) Salir\n\n"); 
+  
+  printf("     Seleccione una opcion: ");
+  scanf("%i",&opcion);                              // Capturo opcion del Menu
+
+  switch (opcion)
+  {
+    
+   case 1: idP = refresco(); 
+           if (idP != -1) {guardoCompra(idP, &u);}                  
+           break;
+
+   case 2: system ("cls");
+            break;                                   // Fin del Programa
+
+   default: printf("\nError, Ingrese una de las siete opciones\n\n");
+            system("pause");
+            break;     
+  }
+}while(opcion!=2);
+
+}
 
