@@ -24,16 +24,16 @@ inventario datos[10]=                        // Inventario Inicial de Bebidas y 
 
 struct cambio dinero[10]=                     // Inventario Inicial de Monedas
 {
-0,10,        // valor, cantidad
-1,10,
+1,10,        // valor, cantidad
 2,10,
+3,10,
+4,10,
 5,10,
-10,10,
-15,10,
-20,10,
-25,10,
-50,10,
-100,10
+6,10,
+7,10,
+8,10,
+9,10,
+10,10
 };    
 
 void FicheroProyecto()
@@ -149,7 +149,7 @@ inventario * refresco()
 int a,producto=0,ingreso=0,mon_tabla[10],cambio[10],total=0,saldo=0;   
 
 for (a=0;a<10;a++)
-  mon_tabla[a]=cambio[a]=0;                         // Reseteo las Monedas Ingresadas por el Cliente y las que se le Entregaran por Cambio
+  mon_tabla[a]=cambio[a]=0;              // Reseteo las Monedas Ingresadas por el Cliente y las que se le Entregaran por Cambio
 
 printf(" Codigo \t\tProducto\t\tPrecio\n\n");
 
@@ -333,72 +333,3 @@ else
 
 //system("pause");  
 
-/*
-int menuAdmin()
-{
-
-  int opcion;  
-int total = 0;
-  
- // Usuario usuario[10];
-
-do  
-{
-  printf("\t1) Datos usuarios\n");
-  printf("\t2) Reponer Productos\n");
-  printf("\t3) Inventario Valorado\n"); 
-  printf("\t4) Reponer Cambio\n");
-  printf("\t5) Retirar Cambio\n");
-
-
-  printf("\t6) Salir\n\n");
-  printf("     Seleccione una opcion: ");
-  scanf("%i",&opcion);                              // Capturo opcion del Menu
-  switch (opcion)
-  {
-    case 1: datosUsuarios(); break;
-    
-   case 2: reponer_retirar(1);                      // Repongo Productos
-           //guardar();
-           break;
-   case 3: invent_val_din(1);                       // Imprimo el Inventario de Productos
-           break;
-   case 4: reponer_retirar(2);                      // Imprimo el Inventario de Dinero
-           break;
-   case 5: reponer_retirar(3);                      // Retiro Monedas
-           break;
-
-
-   case 6: break;                                   // Fin del Programa
-   default: printf("\nError, Ingrese una de las siete opciones\n\n");
-            system("pause");
-            break;     
-  }
-}while(opcion!=6);
-
-}
-void ingresoAdmin()
-{
-char name[20];
-char password[10];
-printf("Enter username: ");
-scanf("%s",name);
-printf("Enter password: ");
-scanf("%s",password);
-if (strcmp(name, "Admin") == 0 && strcmp(password, "pass") == 0)
-{
-  printf("Access granted\n");
-  menuAdmin();
-}
-
-else printf("Access denied\n");
-
-
-getch();
-}
-
-void datosUsuarios()
-{
-
-  }
-*/

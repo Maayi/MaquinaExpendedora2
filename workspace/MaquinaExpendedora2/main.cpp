@@ -41,7 +41,7 @@ int main (int argc, const char * argv[])
   
   FicheroProyecto();
 
-  LeerCompras();
+  //LeerCompras();
 
   LeerFichero();
  
@@ -142,7 +142,8 @@ do
 	cout<< "5) Reponer Cambio"<< endl;
 	cout<< "6) Retirar Cambio"<< endl;
 	cout<< "7) Eliminar Usuario"<< endl;
-	cout<< "8) Salir"<< endl;
+	cout<< "8) Compras registradas"<< endl;
+	cout<< "9) Salir"<< endl;
 
 	cout<< endl;
 	cout<<endl;
@@ -171,14 +172,17 @@ do
     case 7 : eliminarUsuario();
     break;
 
+    case 8: LeerCompras();
+    break;
 
-   case 8: system("cls");
+
+   case 9: system("cls");
             break;                                   // Fin del Programa
    default: cout<<"Error, Ingrese una de las siete opciones"<<endl;
             system("pause");
             break;     
   }
-}while(opcion!=8);
+}while(opcion!=9);
 
 }
 
