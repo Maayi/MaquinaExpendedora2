@@ -251,6 +251,8 @@ void Capturar()
     }
       
   }while (repetido ==true);
+
+  delete[] id;delete[]nom; delete[]ape1; delete[]ape2;
 } 
 void LeerCompras()
 {
@@ -324,7 +326,7 @@ void LeerCompras()
   ifs.close();
   cout << "___________________________________________________________________" << endl<< endl;
 
-
+delete[] dniU;delete[]nomU; delete[]nombreP;
 
 
 }
@@ -385,6 +387,8 @@ void LeerFichero()
 }
   ifs.close();
   cout << "___________________________________________________________________" << endl<< endl;
+
+    delete[] id;delete[]nom; delete[]ape1; delete[]ape2;
 
 }
 
