@@ -15,7 +15,6 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
-//#include "sqlite3.h"
 #include <stdio.h>
 #include <iostream>
 
@@ -44,7 +43,7 @@ int main (int argc, const char * argv[])
   
   FicheroProyecto();
 
- // LeerCompras();
+  LeerCompras();
 
   LeerFichero();
  
@@ -92,7 +91,7 @@ void guardoCompra(int id, Usuario& u)
   VectCompras.push_back(c);
 
 
-  ofstream ofs("Compras.txt");
+  ofstream ofs("Ficheros/Compras.txt");
 
   for (vector<Compra>:: iterator i= VectCompras.begin(); i!= VectCompras.end(); i++)
   {
@@ -206,9 +205,6 @@ void Capturar()
    char* ape2 = new char [34];
    long telef;
 
-      // sqlite3 *db;
-//sqlite3_open("user.db", & db);
-
   do
   {
    repetido = false;
@@ -252,53 +248,30 @@ void Capturar()
       Usuario u (id, nom, ape1, ape2, telef);
       cout<< u;
       VectUsuarios.push_back(u);
+    }
       
-
-     /* std:: string createQuery = "CREATE TABLE IF NOT EXISTS usuario (id TEXT PRIMARY KEY, nombre TEXT, ape1 TEXT,  ape2 TEXT, tele INTEGER NOT NULL DEFAULT (NOW()));";
-   sqlite3_stmt *createStmt;
-  cout << "Creating Table Usuaio" << endl;
-  sqlite3_prepare_v2(db, createQuery.c_str(), createQuery.size(), &createStmt, NULL);
-   cout << "Stepping Table Usuario" << endl;
-   if (sqlite3_step(createStmt) != SQLITE_DONE) cout << "Didn't Create Table!" << endl;
-
- 
-string dni =std::string(id);
-
-   string insertQuery = "INSERT INTO usuario (id,nombre, ape1 , ape2, tele) VALUES (" << dni <<", '"<< std::string(nom) <<"', '"<< ape1 <<"', '"<< ape2<<"', '"<< telef <<"')";
-
-
-   sqlite3_stmt *insertStmt;
-   cout << "Creating Insert Statement" << endl;
-   sqlite3_prepare(db, insertQuery.c_str(), insertQuery.size(), &insertStmt, NULL);
-   cout << "Stepping Insert Statement" << endl;
-   if (sqlite3_step(insertStmt) != SQLITE_DONE) cout << "Didn't Insert Item!" << endl;
-
-  cout << "Success!" << endl;}*/
-}
-  
-   
-
-    
   }while (repetido ==true);
 } 
 void LeerCompras()
 {
-  cout << endl <<"_________________________FICHERO Compras.TXT____________________"<< endl<< endl;
+
+ cout << endl <<"_________________________FICHERO Compras.TXT____________________"<< endl<< endl;
   VectCompras.clear();
   vector<string> atributos;
   const char* dniU= new char [34];
   const char* nomU= new char [34];
   int idP = 0;
-  const char* nombreP = new char [34];
-  /*const char* nomP1 = new char [34];
-  const char* nomP2 = new char [34]; // Para los productos con nombres compuestos: ej: coca cola*/
-  
-
- 
+  const char* nombreP = new char [34]; 
 
   string line;
   string compra;
-  ifstream ifs("Compras.txt");
+  ifstream ifs("Ficheros/Compras.txt");
+  if(ifs==NULL)
+  {
+    cout << '\t' <<"No hay ninguna compra registrada"<< endl;
+  }
+  else
+  {
 
   int i=0;
   while(getline(ifs, line))
@@ -342,19 +315,14 @@ void LeerCompras()
 
           atributos.clear();
                     
-    //cout<< "Usuario "<< i << ": "<<usuario<< endl;
     compra ="";
     i++;
   }
 
+  }
+  
   ifs.close();
   cout << "___________________________________________________________________" << endl<< endl;
-
-
-for (vector<Compra>:: iterator i= VectCompras.begin(); i!= VectCompras.end(); i++)
-  {
-    cout<< *i;
-  }
 
 
 
@@ -373,8 +341,13 @@ void LeerFichero()
 
   string line;
   string usuario;
-  ifstream ifs("Usuarios.txt");
-
+  ifstream ifs("Ficheros/Usuarios.txt");
+ if(ifs==NULL)
+  {
+    cout << '\t' <<"No hay ningun usuario registrado"<< endl;
+  }
+  else
+  {
   int i=0;
   while(getline(ifs, line))
   {
@@ -405,23 +378,19 @@ void LeerFichero()
           }
 
           atributos.clear();
-                    
-    //cout<< "Usuario "<< i << ": "<<usuario<< endl;
+
     usuario ="";
     i++;
   }
-
+}
   ifs.close();
   cout << "___________________________________________________________________" << endl<< endl;
 
-
-
-
-
 }
+
 void GuardarEnFichero()
 {
-  ofstream ofs("Usuarios.txt");
+  ofstream ofs("Ficheros/Usuarios.txt");
   for (vector< Usuario>:: iterator i= VectUsuarios.begin(); i!= VectUsuarios.end(); i++)
   {
     ofs << *i ;

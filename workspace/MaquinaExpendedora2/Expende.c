@@ -74,7 +74,7 @@ void guardarProductos ()
   int a;
   
   //abrir fichero para escritura "w"
-  f = fopen("Productos.txt", "w");
+  f = fopen("Ficheros/Productos.txt", "w");
   
   //escribir en fichero un string formateado 
   fprintf(f, " Codigo \t\tProducto\t\tPrecio\n\n", MAX_NUM);
@@ -84,7 +84,7 @@ void guardarProductos ()
   //cerrar fichero
   fclose(f);
 
-  printf("\nFichero \"Productos.txt\" creado correctamente en la carpeta de este programa\n\n");
+  printf("\nFichero \"Productos.txt\" creado correctamente en la carpeta \"Ficheros\" de este programa\n\n");
 
 }
 
