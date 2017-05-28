@@ -18,7 +18,6 @@
 #include <stdio.h>
 #include <iostream>
 
-#include "Admin.h"
 
 using namespace std;
 void LeerCompras();
