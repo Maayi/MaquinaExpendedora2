@@ -7,7 +7,7 @@
 #define MAX_NUM 10
 #define ELEMENTOS
 
-inventario datos[10]=                        // Inventario Inicial de Bebidas y Alimentos
+struct inventario datos[10]=                        // Inventario Inicial de Bebidas y Alimentos
 {
 
 1,10,"Coca Cola",2,
@@ -88,40 +88,6 @@ void guardarProductos ()
 
 }
 
-  
-/*int menuUsuario()
-{
-
-int opcion;  
-int total = 0;
-inventario * inv;
-do  
-{
-  printf("\t1) Comprar producto\n");
-  printf("\t2) Salir\n\n"); 
- 
-  printf("     Seleccione una opcion: ");
-  scanf("%i",&opcion);                              // Capturo opcion del Menu
-
-  switch (opcion)
-  {
-    
-   case 1:  inv = refresco(); 
-   			return inv->id;                        
-            break;
-
-   case 2: system ("cls");
-            break;                                   // Fin del Programa
-
-   default: printf("\nError, Ingrese una de las siete opciones\n\n");
-            system("pause");
-            break;     
-  }
-}while(opcion!=2);
-
-return -1; // En caso de que no se haya comprado ningun producto devuelve -1
-
-}*/
 
 char* getNombre(int id)
 {
@@ -149,21 +115,19 @@ int refresco()
 int a,producto=0,ingreso=0,mon_tabla[10],cambio[10],total=0,saldo=0;   
 
 for (a=0;a<10;a++)
-  mon_tabla[a]=cambio[a]=0;              // Reseteo las Monedas Ingresadas por el Cliente y las que se le Entregaran por Cambio
+    mon_tabla[a]=cambio[a]=0;              // Reseteo las Monedas Ingresadas por el Cliente y las que se le Entregaran por Cambio
 
 printf(" Codigo \t\tProducto\t\tPrecio\n\n");
 
 
 for (a=0;a<10;a++)                                 // Imprimo el Inventario de Productos
- { printf("%3i)\t\t\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio);}
+    printf("%3i)\t\t\t%s\t\t %i\n",a+1,datos[a].nombres,datos[a].precio);
 
 
 while (producto<1||producto>10)
 {     
   printf("\nIngrese el codigo del refresco que desea comprar: ");
   scanf("%i",&producto);                                // Escojo producto
-
- 
 
   if (producto<1||producto>10)
    printf("\nError, Ingrese una de las diez opciones\n"); 
@@ -174,7 +138,7 @@ else
 {
   printf("\n\tValor\n\n");
   for (a=0;a<10;a++)                                // Imprimo los Valores de las Monedas
-   printf("%2i)\t%5i\n",a+1,dinero[a].valor); 
+  printf("%2i)\t%5i\n",a+1,dinero[a].valor); 
   printf("11) Fin de Ingreso de Monedas\n");    
   while(ingreso!=11)
   {
@@ -219,7 +183,9 @@ else
     } 
     datos[producto-1].cantidad--;                       // Entrego el producto                                 
     printf("\n");   
-    return (int) &datos[producto-1].id;
+    printf("El id del prodcuto es: %i\n", &datos[producto-1].id);
+    
+    return producto;
 
    }                                                                    
   }      

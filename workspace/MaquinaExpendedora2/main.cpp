@@ -22,21 +22,23 @@
 #include "Admin.h"
 
 using namespace std;
-void MenuUsuario(Usuario &u);
+void LeerCompras();
+void LeerFichero();
+void guardoCompra(int id,Usuario& u);
+void eliminarUsuario();
+void Capturar();
+void GuardarEnFichero();
 void RegistroUsuario();
-void guardoCompra(int id,Usuario* u);
+int  IngresoCliente();
+void MenuUsuario(Usuario &u);
 int MenuIncial();
 void IngresoAdmin();
 void MenuAdmin();
-void Capturar();
-void GuardarEnFichero();
-void LeerCompras();
-void LeerFichero();
-int  IngresoCliente();
-int eliminarUsuario();
+
 
  static vector <Compra> VectCompras;
  static vector <Usuario> VectUsuarios;
+ 
 int main (int argc, const char * argv[])
 {
   
@@ -79,23 +81,15 @@ void RegistroUsuario()
 {
 
   Capturar();
-  Usuario u = VectUsuarios.back();
-  int result =0;
-  //*u = VectUsuarios.back();
- //Guardo en vectUsuario
   GuardarEnFichero(); //Guardo en Fichero Usuario.txt
+  Usuario u = VectUsuarios.back();
   MenuUsuario(u); //Llamo al menu del usuario
-  
- 
-
-   
-
 }
 
-void guardoCompra(int id, Usuario* u)
+void guardoCompra(int id, Usuario& u)
 {
 
-  Compra c (u->getDni(), u->getNombre(), id, getNombre(id));
+  Compra c (u.getDni(), u.getNombre(), id, getNombre(id));
   VectCompras.push_back(c);
 
 
@@ -346,7 +340,7 @@ void LeerCompras()
 }
 void LeerFichero()
 {
-  cout << endl <<"___________________LEYENDO FICHERO USUARIOS.TXT____________________"<< endl<< endl;
+  cout << endl <<"__________________________ FICHERO USUARIOS.TXT____________________"<< endl<< endl;
   VectUsuarios.clear();
   vector<string> atributos;
   const char* id= new char [34];
@@ -457,7 +451,7 @@ int  IngresoCliente()
      
 }
 
-int eliminarUsuario ()
+void eliminarUsuario ()
 {
    bool correcto= false;
 string nombre;
@@ -493,13 +487,6 @@ string dni;
     { 
       cout <<"El dni o el nombre son incorrectos... " <<endl<< endl;
      }
- 
-
-    
-
-
-
-  return 0;
     
 
     }
@@ -522,7 +509,7 @@ string dni;
   {
     
    case 1: idP = refresco(); 
-           if (idP != -1) {guardoCompra(idP, &u);}                  
+           if (idP != -1) {guardoCompra(idP, u);}                  
            break;
 
    case 2: system ("cls");
